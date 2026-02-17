@@ -6,7 +6,7 @@ export default function ProfileHeader() {
       <div className="flex items-center gap-3">
         <div>
           <Image
-            src="/avatar.png"
+            src="/images/avatar.png"
             alt="Avatar"
             width={45}
             height={45}

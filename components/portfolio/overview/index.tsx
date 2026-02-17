@@ -9,11 +9,11 @@ import {
 
 export default function Overview() {
   return (
-    <div className="font-geist-sans">
+    <section className="font-geist-sans">
       <div>
         <p className="text-muted-foreground">
           I&apos;m a 20yo Full-Stack Developer focused on building clean,
-          scalable web products. <br /> Currently, I&apos;m building{" "}
+          scalable web products. <br /> <br /> Currently, I&apos;m building{" "}
           <Link
             href="https://www.draftlogo.com/"
             target="_blank"
@@ -76,6 +76,6 @@ export default function Overview() {
           </Link>
         </p>
       </div>
-    </div>
+    </section>
   );
 }

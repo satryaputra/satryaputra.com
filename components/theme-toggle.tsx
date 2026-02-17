@@ -14,6 +14,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Skeleton } from "./ui/skeleton";
 
 type ThemeOption = "system" | "light" | "dark";
 
@@ -23,15 +24,18 @@ export default function ThemeToggle({ className }: { className?: string }) {
 
   React.useEffect(() => setMounted(true), []);
 
+  if (!mounted) {
+    return <Skeleton className="h-7 w-7" />;
+  }
+
   const currentTheme = (theme ?? "system") as ThemeOption;
   const effectiveTheme = (resolvedTheme ?? "light") as Exclude<
     ThemeOption,
     "system"
   >;
 
-  const Icon = !mounted
-    ? ComputerIcon
-    : currentTheme === "system"
+  const Icon =
+    currentTheme === "system"
       ? ComputerIcon
       : effectiveTheme === "dark"
         ? MoonIcon
