@@ -27,6 +27,12 @@ export const TECH_STACK: TechStack[] = [
     theme: true,
   },
   {
+    id: "bun",
+    title: "Bun",
+    href: "https://bun.sh/",
+    categories: ["Runtime Environment"],
+  },
+  {
     id: "react",
     title: "React",
     href: "https://react.dev/",
