@@ -18,10 +18,10 @@ export default function Overview() {
             href="https://www.draftlogo.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-foreground underline underline-offset-4"
+            className="font-medium text-foreground underline-offset-4 hover:underline"
             aria-label="Visit draftlogo"
           >
-            <IconLogo className="mr-1.5 ml-0.5 h-4 w-4 rounded-sm" />
+            <IconLogo className="mr-1 mb-0.5 ml-0.5 h-4 w-4 rounded-sm" />
             draftlogo
           </Link>{" "}
           — a SaaS that helps founders generate professional, minimal logos in
@@ -34,13 +34,13 @@ export default function Overview() {
             href="https://x.com/ratneshchipre"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-foreground underline underline-offset-4"
+            className="font-medium text-foreground underline-offset-4 hover:underline"
             aria-label="Visit twitter"
           >
             <HugeiconsIcon
               icon={NewTwitterIcon}
               strokeWidth={2}
-              className="mr-1.5 ml-0.5 inline-flex h-4 w-4"
+              className="mr-1 mb-0.5 ml-0.5 inline-flex h-4 w-4"
             />
             @ratneshchipre
           </Link>
@@ -49,13 +49,13 @@ export default function Overview() {
             href="https://github.com/ratneshchipre"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-foreground underline underline-offset-4"
+            className="font-medium text-foreground underline-offset-4 hover:underline"
             aria-label="Visit github"
           >
             <HugeiconsIcon
               icon={GithubIcon}
               strokeWidth={2}
-              className="mr-1.5 ml-0.5 inline-flex h-4 w-4"
+              className="mr-1 mb-0.5 ml-0.5 inline-flex h-4 w-4"
             />
             GitHub
           </Link>
@@ -64,13 +64,13 @@ export default function Overview() {
             href="mailto:ratneshchipre@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-foreground underline underline-offset-4"
+            className="font-medium text-foreground underline-offset-4 hover:underline"
             aria-label="Mail to ratneshchipre"
           >
             <HugeiconsIcon
               icon={Mail01Icon}
               strokeWidth={2}
-              className="mr-1.5 ml-0.5 inline-flex h-4 w-4"
+              className="mr-1 mb-0.5 ml-0.5 inline-flex h-4 w-4"
             />
             email.
           </Link>

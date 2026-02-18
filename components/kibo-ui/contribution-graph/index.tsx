@@ -71,6 +71,14 @@ const DEFAULT_LABELS: Labels = {
   },
 };
 
+const THEME = cn(
+  'data-[level="0"]:fill-muted-foreground/10',
+  'data-[level="1"]:fill-muted-foreground/30',
+  'data-[level="2"]:fill-muted-foreground/50',
+  'data-[level="3"]:fill-muted-foreground/70',
+  'data-[level="4"]:fill-muted-foreground/90'
+);
+
 type ContributionGraphContextType = {
   data: Activity[];
   weeks: Week[];
@@ -327,14 +335,7 @@ export const ContributionGraphBlock = ({
 
   return (
     <rect
-      className={cn(
-        'data-[level="0"]:fill-muted',
-        'data-[level="1"]:fill-muted-foreground/20',
-        'data-[level="2"]:fill-muted-foreground/40',
-        'data-[level="3"]:fill-muted-foreground/60',
-        'data-[level="4"]:fill-muted-foreground/80',
-        className
-      )}
+      className={cn(THEME, className)}
       data-count={activity.count}
       data-date={activity.date}
       data-level={activity.level}
@@ -363,6 +364,7 @@ export type ContributionGraphCalendarProps = Omit<
 };
 
 export const ContributionGraphCalendar = ({
+  title = "Contribution Graph",
   hideMonthLabels = false,
   className,
   children,
@@ -387,9 +389,9 @@ export const ContributionGraphCalendar = ({
         viewBox={`0 0 ${width} ${height}`}
         width={width}
       >
-        <title>Contribution Graph</title>
+        <title>{title}</title>
         {!hideMonthLabels && (
-          <g className="fill-current">
+          <g className="selection:fill-selection-foreground fill-current">
             {monthLabels.map(({ label, weekIndex }) => (
               <text
                 dominantBaseline="hanging"
@@ -479,7 +481,7 @@ export const ContributionGraphLegend = ({
 
   return (
     <div
-      className={cn("ml-auto flex items-center gap-[3px]", className)}
+      className={cn("ml-auto flex items-center gap-0.75", className)}
       {...props}
     >
       <span className="mr-1 text-muted-foreground">
@@ -492,14 +494,7 @@ export const ContributionGraphLegend = ({
           <svg height={blockSize} key={level} width={blockSize}>
             <title>{`${level} contributions`}</title>
             <rect
-              className={cn(
-                "stroke-border stroke-[1px]",
-                'data-[level="0"]:fill-muted',
-                'data-[level="1"]:fill-muted-foreground/20',
-                'data-[level="2"]:fill-muted-foreground/40',
-                'data-[level="3"]:fill-muted-foreground/60',
-                'data-[level="4"]:fill-muted-foreground/80'
-              )}
+              className={cn(THEME)}
               data-level={level}
               height={blockSize}
               rx={blockRadius}

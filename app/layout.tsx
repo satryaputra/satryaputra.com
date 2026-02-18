@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <TooltipProvider>
-            <div className="container mx-auto md:max-w-152">{children}</div>
+            <div className="container mx-auto md:max-w-161">{children}</div>
           </TooltipProvider>
         </ThemeProvider>
       </body>
