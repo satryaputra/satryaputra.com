@@ -6,11 +6,14 @@ export default function Projects() {
   if (!PROJECTS || PROJECTS.length === 0) {
     return (
       <section
-        className="mt-20 space-y-7 font-geist-sans"
+        className="mt-15 space-y-5 font-geist-sans"
         aria-labelledby="projects-heading"
       >
         <header>
-          <h2 id="projects-heading" className="text-lg font-medium">
+          <h2
+            id="projects-heading"
+            className="font-geist-pixel-square text-muted-foreground"
+          >
             Projects
           </h2>
         </header>
@@ -20,7 +23,7 @@ export default function Projects() {
   }
 
   return (
-    <section className="mt-15 space-y-7" aria-labelledby="projects-heading">
+    <section className="mt-15 space-y-5" aria-labelledby="projects-heading">
       <header>
         <h2
           id="projects-heading"
