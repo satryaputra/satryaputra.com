@@ -20,16 +20,18 @@ export default function MobileNav({ items }: { items: NavItem[] }) {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger
-        className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-foreground hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none sm:hidden"
+        className="group relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-foreground hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none sm:hidden"
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
       >
         <HugeiconsIcon
-          icon={open ? Cancel01Icon : Menu09Icon}
+          icon={Menu09Icon}
           strokeWidth={2}
-          className={cn(
-            "size-4.5 transition-transform duration-200 ease-out",
-            open && "rotate-90"
-          )}
+          className="size-4.5 transition-all duration-300 ease-in-out group-data-popup-open:opacity-0 group-data-popup-open:blur-xs"
+        />
+        <HugeiconsIcon
+          icon={Cancel01Icon}
+          strokeWidth={2}
+          className="absolute size-4.5 rotate-90 opacity-0 transition-all duration-300 ease-in-out group-data-popup-open:opacity-100 group-data-popup-open:blur-none"
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent>

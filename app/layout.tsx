@@ -4,6 +4,7 @@ import { GeistPixelSquare } from "geist/font/pixel";
 import "@/styles/globals.css";
 import ThemeProvider from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} antialiased`}
       >
         <ThemeProvider>
+          <Toaster position="top-center" />
           <TooltipProvider>
             <div className="container mx-auto md:max-w-161">{children}</div>
           </TooltipProvider>

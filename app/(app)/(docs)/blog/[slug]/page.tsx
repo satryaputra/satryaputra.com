@@ -128,7 +128,7 @@ export default async function BlogPostPage({
             Blog
           </Link>
           <div className="flex items-center gap-2">
-            <PostShareMenu />
+            <PostShareMenu url={getPostUrl(post)} />
             {previous && (
               <Link href={`/blog/${previous.slug}`}>
                 <Button variant="secondary" className="cursor-pointer px-2">

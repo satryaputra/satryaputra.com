@@ -7,7 +7,10 @@ export default function BlogPage() {
   return (
     <section className="space-y-10 pt-8" aria-labelledby="blog-heading">
       <header>
-        <h2 id="blog-heading" className="font-geist-pixel-square text-muted-foreground text-lg">
+        <h2
+          id="blog-heading"
+          className="font-geist-pixel-square text-lg text-muted-foreground"
+        >
           Blog
         </h2>
       </header>

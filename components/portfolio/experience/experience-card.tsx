@@ -118,7 +118,7 @@ function PositionContent({ position }: PositionContentProps) {
         </CollapsibleTrigger>
         <CollapsibleContent
           keepMounted
-          className="h-(--collapsible-panel-height) overflow-hidden transition-[height] duration-300 ease-in-out data-ending-style:h-0 data-starting-style:h-0"
+          className="h-(--collapsible-panel-height) overflow-hidden duration-300 data-ending-style:h-0 data-ending-style:animate-fade-out data-starting-style:h-0 data-starting-style:animate-fade-in"
         >
           {hasDescription && (
             <div className="pt-4" itemProp="description">
