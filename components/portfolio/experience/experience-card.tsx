@@ -122,9 +122,9 @@ function PositionContent({ position }: PositionContentProps) {
         >
           {hasDescription && (
             <div className="pt-4" itemProp="description">
-              <ul className="list-inside list-disc space-y-2 text-sm leading-relaxed text-muted-foreground">
-                {position.description!.map((item) => (
-                  <li key={item}>{item}</li>
+              <ul className="ml-4 list-disc space-y-2 text-sm leading-relaxed text-muted-foreground">
+                {position.description!.map((item, index) => (
+                  <li key={index}>{item}</li>
                 ))}
               </ul>
             </div>
@@ -236,33 +236,43 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         )}
       </header>
       <div
-        className="grid grid-cols-[24px_1fr] gap-x-3 gap-y-4"
+        className={cn(
+          "grid gap-x-3 gap-y-4",
+          positions.length > 1 ? "grid-cols-[24px_1fr]" : "grid-cols-1"
+        )}
         style={{ gridTemplateRows: `repeat(${positions.length}, auto)` }}
       >
-        <span
-          aria-hidden
-          className="col-start-1 flex justify-center pt-2"
-          style={{ gridRow: "1 / -1" }}
-        >
-          <span className="min-h-full w-px bg-border" />
-        </span>
+        {positions.length > 1 && (
+          <span
+            aria-hidden
+            className="col-start-1 flex justify-center pt-2"
+            style={{ gridRow: "1 / -1" }}
+          >
+            <span className="min-h-full w-px bg-border" />
+          </span>
+        )}
         {positions.map((position, index) => {
           const isLast = index === positions.length - 1;
           const isCurrent = !!(isCurrentEmployer && index === 0);
 
           return (
             <React.Fragment key={position.id}>
+              {positions.length > 1 && (
+                <div
+                  className="col-start-1 flex flex-col"
+                  style={{ gridRow: index + 1 }}
+                >
+                  <TimelineIconCell />
+                  {isLast && (
+                    <div className="min-h-4 flex-1 bg-background" aria-hidden />
+                  )}
+                </div>
+              )}
               <div
-                className="col-start-1 flex flex-col"
-                style={{ gridRow: index + 1 }}
-              >
-                <TimelineIconCell />
-                {isLast && (
-                  <div className="min-h-4 flex-1 bg-background" aria-hidden />
+                className={cn(
+                  "min-w-0",
+                  positions.length > 1 ? "col-start-2" : "col-start-1"
                 )}
-              </div>
-              <div
-                className="col-start-2 min-w-0"
                 style={{ gridRow: index + 1 }}
               >
                 <PositionContent position={position} isCurrent={isCurrent} />

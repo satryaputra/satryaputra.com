@@ -91,6 +91,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 {project.description}
               </p>
             )}
+            {project.features && project.features.length > 0 && (
+              <div>
+                <h4 className="sr-only">Features</h4>
+                <ul
+                  className="ml-4 list-disc space-y-2 text-sm leading-relaxed text-muted-foreground"
+                  aria-label="Features"
+                >
+                  {project.features.map((feature, index) => (
+                    <li key={index} itemProp="applicationCategory">
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {project.skills && project.skills.length > 0 && (
               <div>
                 <h4 className="sr-only">Technologies and Skills</h4>
