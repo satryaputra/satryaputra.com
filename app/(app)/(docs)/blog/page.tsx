@@ -1,11 +1,24 @@
-import { getAllPosts } from "@/features/blog/data/posts";
+import { Metadata } from "next";
 import Link from "next/link";
+import { getAllPosts } from "@/features/blog/data/posts";
+import { generateWebsiteMetadata } from "@/config/metadata";
+
+export const metadata: Metadata = generateWebsiteMetadata({
+  title: "Blog | Ratnesh",
+  description:
+    "Raw thoughts and real insights on the intersection of tech, life, and the entrepreneurial journey. Building in public, one lesson at a time.",
+  keywords: ["blogs", "Ratnesh blog", "Ratnesh blog posts"],
+  image: "blog.png",
+});
 
 export default function BlogPage() {
   const allPosts = getAllPosts();
 
   return (
-    <section className="space-y-10 pt-8" aria-labelledby="blog-heading">
+    <section
+      className="h-[calc(100svh-14rem)] space-y-10 pt-8"
+      aria-labelledby="blog-heading"
+    >
       <header>
         <h2
           id="blog-heading"

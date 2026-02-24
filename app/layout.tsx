@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import ThemeProvider from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { websiteMetadata } from "@/config/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,11 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Ratnesh - Developer",
-  description:
-    "I'm Ratnesh, a Full-Stack Web Developer. I love to build products.",
-};
+export const metadata: Metadata = websiteMetadata;
 
 export default function RootLayout({
   children,
