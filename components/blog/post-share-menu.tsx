@@ -40,7 +40,7 @@ export default function PostShareMenu({ url }: { url: string }) {
         <HugeiconsIcon icon={Share03Icon} strokeWidth={2} className="size-4" />
         Share
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40 font-geist-sans" align="center">
+      <DropdownMenuContent className="w-40 font-geist-sans mr-5" align="center">
         <DropdownMenuItem
           className="cursor-pointer hover:bg-muted!"
           onClick={() => {
