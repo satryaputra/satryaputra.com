@@ -158,7 +158,9 @@ export default async function BlogPostPage({
         </div>
         <Prose className="font-geist-sans">
           <h1 className="mb-1 text-3xl font-semibold tracking-tight">
-            {post.metadata.title}
+            {post.metadata.title.includes("|")
+              ? post.metadata.title.split("|")[0].trim()
+              : post.metadata.title}
           </h1>
           <div className="flex items-center gap-6 text-muted-foreground">
             <p>
