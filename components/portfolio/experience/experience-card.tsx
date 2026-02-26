@@ -191,20 +191,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="flex items-center gap-3 text-lg leading-snug font-medium text-foreground">
-            <span className="truncate">
-              {companyWebsite ? (
-                <a
-                  href={companyWebsite}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline-offset-4 hover:underline"
-                  itemProp="name"
-                >
-                  {companyName}
-                </a>
-              ) : (
-                <span itemProp="name">{companyName}</span>
-              )}
+            <span className="truncate" itemProp="name">
+              {companyName}
             </span>
             {isCurrentEmployer && <CurrentEmployerBadge />}
           </h3>

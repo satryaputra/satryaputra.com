@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Separator } from "./ui/separator";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Skeleton } from "./ui/skeleton";
 
 function FooterDateTime() {
   const [now, setNow] = React.useState<Date | null>(null);
@@ -15,7 +16,19 @@ function FooterDateTime() {
     return () => clearInterval(intervalId);
   }, []);
 
-  if (!now) return null;
+  if (!now) {
+    return (
+      <div className="flex items-center justify-center gap-3">
+        <Skeleton className="h-3.5 w-32 rounded-sm" />
+        <Separator
+          orientation="vertical"
+          className="h-4 self-center"
+          aria-hidden="true"
+        />
+        <Skeleton className="h-3.5 w-32 rounded-sm" />
+      </div>
+    );
+  }
 
   const timeZone = "Asia/Kolkata";
   const isoString = now.toISOString();
@@ -65,7 +78,7 @@ function FooterDateTime() {
         >
           {timeLabel} GMT+5:30
         </TooltipTrigger>
-        <TooltipContent className="font-geist-sans" sideOffset={6}>
+        <TooltipContent className="font-geist-sans" sideOffset={10}>
           {timeZone}
         </TooltipContent>
       </Tooltip>

@@ -17,7 +17,7 @@ const components: MDXRemoteProps["components"] = {
     <Heading as="h1" className="font-semibold" {...props} />
   ),
   h2: (props: React.ComponentProps<"h2">) => (
-    <Heading as="h2" className="font-semibold" {...props} />
+    <Heading as="h2" className="font-medium!" {...props} />
   ),
   h3: (props: React.ComponentProps<"h3">) => (
     <Heading as="h3" className="font-semibold" {...props} />
