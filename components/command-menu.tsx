@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCommandState } from "cmdk";
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react";
@@ -14,6 +14,7 @@ import {
   Folder01Icon,
   GitCommitIcon,
   GithubIcon,
+  Globe02Icon,
   Home03Icon,
   Layers01Icon,
   LicenseIcon,
@@ -82,6 +83,11 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#github-contributions",
     icon: GitCommitIcon,
   },
+  {
+    title: "Connect",
+    href: "/#connect",
+    icon: Globe02Icon,
+  },
 ];
 
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = [
@@ -107,6 +113,7 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = [
 
 export function CommandMenu({ posts }: { posts: Post[] }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
 
   const { setTheme } = useTheme();
@@ -118,10 +125,20 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
       if (openInNewTab) {
         window.open(href, "_blank", "noopener");
       } else {
+        if (href.startsWith("/#")) {
+          const id = href.split("#")[1];
+          if (pathname === "/") {
+            const element = document.getElementById(id);
+            if (element) {
+              element.scrollIntoView({ behavior: "auto" });
+              return;
+            }
+          }
+        }
         router.push(href);
       }
     },
-    [router]
+    [router, pathname]
   );
 
   const createThemeHandler = React.useCallback(
@@ -185,7 +202,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
       >
         <Command>
           <CommandMenuInput setOpen={setOpen} />
-          <CommandList className="supports-timeline-scroll:scroll-fade-effect-y min-h-80">
+          <CommandList className="min-h-80 supports-timeline-scroll:scroll-fade-effect-y">
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandLinkGroup
               heading="Menu"
@@ -214,7 +231,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
                 keywords={["theme"]}
                 onSelect={createThemeHandler("light")}
               >
-                <HugeiconsIcon icon={Sun01Icon} strokeWidth={2} />
+                <HugeiconsIcon
+                  icon={Sun01Icon}
+                  strokeWidth={2}
+                  className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
+                />
                 Light
               </CommandItem>
               <CommandItem
@@ -222,7 +243,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
                 keywords={["theme"]}
                 onSelect={createThemeHandler("dark")}
               >
-                <HugeiconsIcon icon={MoonIcon} strokeWidth={2} />
+                <HugeiconsIcon
+                  icon={MoonIcon}
+                  strokeWidth={2}
+                  className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
+                />
                 Dark
               </CommandItem>
               <CommandItem
@@ -230,7 +255,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
                 keywords={["theme"]}
                 onSelect={createThemeHandler("system")}
               >
-                <HugeiconsIcon icon={ComputerIcon} strokeWidth={2} />
+                <HugeiconsIcon
+                  icon={ComputerIcon}
+                  strokeWidth={2}
+                  className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
+                />
                 System
               </CommandItem>
             </CommandGroup>
@@ -281,7 +310,13 @@ function CommandLinkGroup({
             keywords={link.keywords}
             onSelect={() => onLinkSelect(link.href, link.openInNewTab)}
           >
-            {Icon ? <HugeiconsIcon icon={Icon} strokeWidth={2} /> : null}
+            {Icon ? (
+              <HugeiconsIcon
+                icon={Icon}
+                strokeWidth={2}
+                className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
+              />
+            ) : null}
             {link.title}
           </CommandItem>
         );

@@ -35,7 +35,11 @@ export default function Connect() {
   ];
 
   return (
-    <section className="mt-15 space-y-5" aria-labelledby="connect-heading">
+    <section
+      id="connect"
+      className="mt-15 scroll-mt-20 space-y-5"
+      aria-labelledby="connect-heading"
+    >
       <header>
         <h2
           id="connect-heading"

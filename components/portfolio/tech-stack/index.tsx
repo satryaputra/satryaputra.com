@@ -24,7 +24,11 @@ export default function TechStack() {
   }
 
   return (
-    <section className="mt-15 space-y-5" aria-labelledby="tech-stack-heading">
+    <section
+      id="stack"
+      className="mt-15 scroll-mt-20 space-y-5"
+      aria-labelledby="tech-stack-heading"
+    >
       <header>
         <h2
           id="tech-stack-heading"

@@ -23,7 +23,11 @@ export default function Projects() {
   }
 
   return (
-    <section className="mt-15 space-y-5" aria-labelledby="projects-heading">
+    <section
+      id="projects"
+      className="mt-15 scroll-mt-20 space-y-5"
+      aria-labelledby="projects-heading"
+    >
       <header>
         <h2
           id="projects-heading"
