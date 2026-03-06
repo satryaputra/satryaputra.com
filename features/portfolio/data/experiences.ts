@@ -8,7 +8,24 @@ export const EXPERIENCES: Experience[] = [
     companyWebsite: "https://www.collabvision.in",
     positions: [
       {
-        id: "94ae3d2b",
+        id: "2",
+        title: "Frontend Developer",
+        employmentPeriod: {
+          start: "Oct 2025",
+        },
+        employmentType: "Internship",
+        description: [
+          "Built the frontend for a Jewellery Management System to manage retailers, vendors, and girvi customers.",
+          "Managed application state with Redux Toolkit for modules like retailers, vendors, invoices, and inventory.",
+          "Integrated real-time alerts such as low stock and customer birthday notifications.",
+          "Implemented dynamic invoice PDF generation by mapping application data to invoice templates.",
+          "Added PWA features including installable app support, service workers, and offline fallback pages.",
+        ],
+        skills: ["Next.js", "TypeScript", "TailwindCSS", "shadcn/ui", "Redux"],
+        isExpanded: true,
+      },
+      {
+        id: "1",
         title: "Backend Developer & UI/UX Intern",
         employmentPeriod: {
           start: "Jun 2025",
@@ -24,7 +41,6 @@ export const EXPERIENCES: Experience[] = [
           "Deployment: Managed the full deployment process to Render, ensuring production readiness and reliable performance.",
         ],
         skills: ["JavaScript", "Node.js", "Express.js", "MongoDB", "Figma"],
-        isExpanded: true,
       },
     ],
     isCurrentEmployer: true,
