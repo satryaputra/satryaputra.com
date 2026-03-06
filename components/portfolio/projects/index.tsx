@@ -36,11 +36,11 @@ export default function Projects() {
           Projects
         </h2>
       </header>
-      <div className="space-y-6">
+      <div className="space-y-5">
         {PROJECTS.map((project, index) => (
           <div key={project.id}>
             <ProjectCard project={project} />
-            {index < PROJECTS.length - 1 && <Separator className="my-4" />}
+            {index < PROJECTS.length - 1 && <Separator className="my-3" />}
           </div>
         ))}
       </div>

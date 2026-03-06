@@ -81,7 +81,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </header>
         </CollapsibleTrigger>
-        <CollapsibleContent className="group h-(--collapsible-panel-height) overflow-hidden duration-300 data-ending-style:h-0 data-ending-style:animate-fade-out data-starting-style:h-0 data-starting-style:animate-fade-in">
+        <CollapsibleContent
+          keepMounted
+          className="group h-(--collapsible-panel-height) overflow-hidden duration-300 data-ending-style:h-0 data-ending-style:animate-fade-out data-starting-style:h-0 data-starting-style:animate-fade-in"
+        >
           <div className="my-3 space-y-4 duration-300">
             {project.description && (
               <p

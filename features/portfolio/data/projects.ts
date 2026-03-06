@@ -27,4 +27,27 @@ export const PROJECTS: Project[] = [
     ],
     isExpanded: true,
   },
+  {
+    id: "Fork & Fire",
+    title: "Fork & Fire - Recipe discovery app with categories and favorites",
+    logo: "/images/project-logos/fork-fire.svg",
+    description:
+      "Fork & Fire is a recipe discovery app built for food lovers to instantly find, save, and share delicious recipes with smart search and step-by-step cooking guides.",
+    features: [
+      "Smart recipe search by ingredients, cuisine, or dietary preference for instant results.",
+      "Step-by-step cooking guides with images and videos for confident meal preparation.",
+      "Save favorite recipes and build a personalized digital cookbook.",
+      "Explore a wide range of categories including Beef, Chicken, Seafood, Pasta, Vegan, Vegetarian, Dessert, and more.",
+    ],
+    link: "https://fork-fire.vercel.app",
+    skills: [
+      "React.js",
+      "JavaScript",
+      "TailwindCSS",
+      "Vite",
+      "Framer Motion",
+      "Context API",
+    ],
+    isExpanded: false,
+  },
 ];
