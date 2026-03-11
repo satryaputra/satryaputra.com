@@ -35,6 +35,11 @@ export default function RootLayout({
             <div className="container mx-auto md:max-w-161">{children}</div>
           </TooltipProvider>
         </ThemeProvider>
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "54e9fa7fdc6748829d41226a8022061a"}'
+        ></script>
       </body>
     </html>
   );
