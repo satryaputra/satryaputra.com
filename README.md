@@ -24,15 +24,15 @@ A clean, professional showcase for my projects, work history, and personal blog 
 
 ### Features
 
-- Next.js 16 & TailwindCSS 4 — Cutting-edge architecture & Next-gen utility styling for peak performance.
-- Command Menu (⌘K) — Global search and navigation palette.
-- Full TypeScript — Type-safe codebase for robust development.
-- MDX Integration — Markdown-powered blog with interactive components.
-- Seamless Dark Mode — Fluid Light/Dark/System theme switching.
-- GitHub Contribution Map — Live visualization of coding activity.
-- Responsive shadcn/ui — Professional, accessible component library.
-- Optimized Images — Fast-loading media with medium-style zoom.
-- Automated SEO — Smart metadata, sitemaps, and robots.txt.
+- Next.js 16 & TailwindCSS 4 – Cutting-edge architecture & Next-gen utility styling for peak performance.
+- Command Menu (⌘K) – Global search and navigation palette.
+- Full TypeScript – Type-safe codebase for robust development.
+- MDX Integration – Markdown-powered blog with interactive components.
+- Seamless Dark Mode – Fluid Light/Dark/System theme switching.
+- GitHub Contribution Map – Live visualization of coding activity.
+- Responsive shadcn/ui – Professional, accessible component library.
+- Optimized Images – Fast-loading media with medium-style zoom.
+- Automated SEO – Smart metadata, sitemaps, and robots.txt.
 
 ## Star History
 
