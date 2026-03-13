@@ -409,8 +409,12 @@ function CommandMenuFooter() {
 function postToCommandLinkItem(post: Post): CommandLinkItem {
   const isComponent = post.metadata.category === "components";
 
+  const title = post.metadata.title.includes("|")
+    ? post.metadata.title.split("|")[0].trim()
+    : post.metadata.title;
+
   return {
-    title: post.metadata.title,
+    title,
     href: isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`,
     keywords: isComponent ? ["component"] : undefined,
     icon: isComponent ? ComputerIcon : TextAlignLeft01Icon,
