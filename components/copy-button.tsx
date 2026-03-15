@@ -12,9 +12,11 @@ export default function CopyButton({
   className,
   variant = "ghost",
   size = "icon-xs",
+  event,
   ...props
 }: React.ComponentProps<typeof Button> & {
   value: string;
+  event?: string;
 }) {
   const [hasCopied, setHasCopied] = React.useState(false);
 

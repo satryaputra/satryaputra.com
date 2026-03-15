@@ -29,6 +29,7 @@ function Prose({
           "prose-a:font-medium prose-a:wrap-break-word prose-a:text-foreground prose-a:underline prose-a:underline-offset-4",
           "prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none",
           "prose-strong:font-medium",
+          "prose-table:my-4",
           "prose-hr:border-edge",
           "prose-blockquote:border-s-border prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none",
           className
@@ -84,12 +85,12 @@ function Heading<T extends HeadingTypes = "h1">({
   const Comp = as ?? "h1";
 
   if (!props.id) {
-    return <Comp className={className} {...props} />;
+    return <Comp className={cn("scroll-mt-24", className)} {...props} />;
   }
 
   return (
     <Comp
-      className={cn("flex flex-row items-center gap-2", className)}
+      className={cn("flex scroll-mt-24 flex-row items-center gap-2", className)}
       {...props}
     >
       <a href={`#${props.id}`} className="peer not-prose">
@@ -98,7 +99,7 @@ function Heading<T extends HeadingTypes = "h1">({
       <HugeiconsIcon
         icon={Link04Icon}
         strokeWidth={2}
-        className="size-4 shrink-0 translate-y-px text-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100"
+        className="size-4.5 shrink-0 translate-y-px text-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100"
         aria-label="Link to section"
       />
     </Comp>

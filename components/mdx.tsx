@@ -1,5 +1,9 @@
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
+
 import Link from "next/link";
 import { Code, Heading } from "./ui/typography";
 import {
@@ -10,7 +14,16 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import {
+  rehypeCodeRawString,
+  rehypeHighlightCode,
+  rehypeHighlightCodeRawString,
+} from "@/lib/rehype-code-block";
+import { rehypeNpmCommand } from "@/lib/rehype-npm-command";
+import { remarkCodeImport } from "@/lib/remark-code-import";
 import { FramedImage } from "./embed";
+import { mdxCodeBlockComponents } from "./mdx-code-block";
+import UnmountingDemo from "./blog/unmounting-demo";
 
 const components: MDXRemoteProps["components"] = {
   h1: (props: React.ComponentProps<"h1">) => (
@@ -20,10 +33,10 @@ const components: MDXRemoteProps["components"] = {
     <Heading as="h2" className="font-medium!" {...props} />
   ),
   h3: (props: React.ComponentProps<"h3">) => (
-    <Heading as="h3" className="font-semibold" {...props} />
+    <Heading as="h3" className="font-medium!" {...props} />
   ),
   h4: (props: React.ComponentProps<"h4">) => (
-    <Heading as="h4" className="font-semibold" {...props} />
+    <Heading as="h4" className="font-medium!" {...props} />
   ),
   h5: (props: React.ComponentProps<"h5">) => (
     <Heading as="h5" className="font-semibold" {...props} />
@@ -37,6 +50,7 @@ const components: MDXRemoteProps["components"] = {
   tr: TableRow,
   th: TableHead,
   td: TableCell,
+  ...mdxCodeBlockComponents,
   code: Code,
   a: ({ href, ...props }: React.ComponentProps<"a">) => {
     const isInternalLink =
@@ -55,74 +69,28 @@ const components: MDXRemoteProps["components"] = {
     );
   },
   FramedImage,
+  UnmountingDemo,
 };
 
-// const options: MDXRemoteProps["options"] = {
-//   mdxOptions: {
-//     remarkPlugins: [remarkGfm, remarkCodeImport],
-//     rehypePlugins: [
-//       [
-//         rehypeExternalLinks,
-//         { target: "_blank", rel: "nofollow noopener noreferrer" },
-//       ],
-//       rehypeSlug,
-//       rehypeComponent,
-//       () => (tree) => {
-//         visit(tree, (node) => {
-//           if (node?.type === "element" && node?.tagName === "pre") {
-//             const [codeEl] = node.children
-//             if (codeEl.tagName !== "code") {
-//               return
-//             }
-
-//             node.__rawString__ = codeEl.children?.[0].value
-//           }
-//         })
-//       },
-//       [
-//         rehypePrettyCode,
-//         {
-//           theme: {
-//             dark: "github-dark",
-//             light: "github-light",
-//           },
-//           keepBackground: false,
-//           onVisitLine(node: LineElement) {
-//             // Prevent lines from collapsing in `display: grid` mode, and allow empty
-//             // lines to be copy/pasted
-//             if (node.children.length === 0) {
-//               node.children = [{ type: "text", value: " " }]
-//             }
-//           },
-//         },
-//       ],
-//       () => (tree) => {
-//         visit(tree, (node) => {
-//           if (node?.type === "element" && node?.tagName === "figure") {
-//             if (!("data-rehype-pretty-code-figure" in node.properties)) {
-//               return
-//             }
-
-//             const preElement = node.children.at(-1)
-//             if (preElement.tagName !== "pre") {
-//               return
-//             }
-
-//             preElement.properties["__withMeta__"] =
-//               node.children.at(0).tagName === "figcaption"
-//             preElement.properties["__rawString__"] = node.__rawString__
-//           }
-//         })
-//       },
-//       rehypeCodeRawString,
-//       rehypeHighlightCode,
-//       rehypeHighlightCodeRawString,
-//       rehypeNpmCommand,
-//       [rehypeAddQueryParams, UTM_PARAMS],
-//     ],
-//   },
-// };
+const options: MDXRemoteProps["options"] = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm, remarkCodeImport],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        { target: "_blank", rel: "nofollow noopener noreferrer" },
+      ],
+      rehypeSlug,
+      // rehypeComponent,
+      rehypeCodeRawString,
+      rehypeHighlightCode,
+      rehypeHighlightCodeRawString,
+      rehypeNpmCommand,
+      // [rehypeAddQueryParams, UTM_PARAMS],
+    ],
+  },
+};
 
 export function MDX({ code }: { code: string }) {
-  return <MDXRemote source={code} components={components} />;
+  return <MDXRemote source={code} components={components} options={options} />;
 }

@@ -115,7 +115,7 @@ export default async function BlogPostPage({
           __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="flex flex-col space-y-12 pt-8">
+      <div className="flex flex-col space-y-12 pt-10">
         <div className="flex items-center justify-between">
           <Link
             href="/blog"
