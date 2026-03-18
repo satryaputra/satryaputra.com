@@ -53,7 +53,7 @@ function FooterDateTime() {
   const timeLabel = timeFormatter.format(now);
 
   return (
-    <div className="flex items-center justify-center gap-3 font-geist-sans text-sm leading-none text-muted-foreground">
+    <div className="flex items-center justify-center gap-3 text-center font-geist-sans text-sm leading-none text-muted-foreground">
       <time
         dateTime={isoString}
         aria-label={dateLabel}

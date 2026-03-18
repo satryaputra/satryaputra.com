@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} selection:bg-foreground selection:text-primary-foreground antialiased`}
       >
         <ThemeProvider>
           <Toaster position="top-center" />

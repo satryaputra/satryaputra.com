@@ -4,7 +4,7 @@ export default function ProfileHeader() {
   return (
     <div className="flex flex-col py-8">
       <div className="flex items-center gap-3">
-        <div>
+        <div className="select-none">
           <Image
             src="/images/avatar.png"
             alt="Avatar"

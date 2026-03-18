@@ -105,10 +105,9 @@ function PositionContent({ position }: PositionContentProps) {
             {position.employmentType && (
               <>
                 <span>{position.employmentType}</span>
-                <Separator
-                  orientation="vertical"
-                  className="data-[orientation=vertical]:h-4"
-                />
+                <div className="flex items-center">
+                  <Separator orientation="vertical" className="h-4" />
+                </div>
               </>
             )}
             <time dateTime={buildDateTimeAttr(start, end)} itemProp="startDate">
@@ -173,7 +172,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
     >
       <header className="not-prose mb-4 flex items-center gap-3">
         <div
-          className="flex size-6 shrink-0 items-center justify-center"
+          className="flex size-6 shrink-0 items-center justify-center select-none"
           aria-hidden
         >
           {companyLogo ? (

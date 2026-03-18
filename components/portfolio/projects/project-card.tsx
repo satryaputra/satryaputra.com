@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <header className="flex w-full items-center justify-between gap-3">
             <div className="flex min-w-0 flex-1 items-center gap-3">
               {project.logo && (
-                <div className="shrink-0">
+                <div className="shrink-0 select-none">
                   <img
                     src={project.logo}
                     alt={`${project.title} logo`}
