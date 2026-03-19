@@ -3,7 +3,7 @@ import { generateWebsiteMetadata } from "@/config/metadata";
 import CollectionContainer from "@/components/collection/collection-container";
 
 export const metadata: Metadata = generateWebsiteMetadata({
-  title: "Collection | Ratnesh",
+  title: "Collection",
   description: "A curated list of my favorite movies, shows, books, and more.",
   keywords: [
     "collection",

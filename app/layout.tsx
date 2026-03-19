@@ -5,7 +5,7 @@ import "@/styles/globals.css";
 import ThemeProvider from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
-import { websiteMetadata } from "@/config/metadata";
+import { defaultWebsiteMetadata } from "@/config/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = websiteMetadata;
+export const metadata: Metadata = defaultWebsiteMetadata;
 
 export default function RootLayout({
   children,
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} selection:bg-foreground selection:text-primary-foreground antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${GeistPixelSquare.variable} antialiased selection:bg-foreground selection:text-primary-foreground`}
       >
         <ThemeProvider>
           <Toaster position="top-center" />

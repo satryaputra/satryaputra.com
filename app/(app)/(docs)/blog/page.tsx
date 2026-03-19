@@ -4,7 +4,7 @@ import { getAllPosts } from "@/features/blog/data/posts";
 import { generateWebsiteMetadata } from "@/config/metadata";
 
 export const metadata: Metadata = generateWebsiteMetadata({
-  title: "Blog | Ratnesh",
+  title: "Blog",
   description:
     "Raw thoughts and real insights on tech, life, and the entrepreneurial journey.",
   keywords: ["blogs", "Ratnesh blog", "Ratnesh blog posts"],

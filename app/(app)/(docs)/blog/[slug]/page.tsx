@@ -19,6 +19,8 @@ import {
 } from "@hugeicons/core-free-icons";
 import PostShareMenu from "@/components/blog/post-share-menu";
 import { Separator } from "@/components/ui/separator";
+import { SITE_CONFIG } from "@/config/site";
+import { generateWebsiteMetadata } from "@/config/metadata";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -44,29 +46,15 @@ export async function generateMetadata({
   const postUrl = getPostUrl(post);
   const ogImage = image || "/images/opengraph-image.png";
 
-  return {
+  return generateWebsiteMetadata({
     title,
     description,
-    alternates: {
-      canonical: postUrl,
-    },
-    openGraph: {
-      url: postUrl,
-      type: "article",
-      publishedTime: toIsoDate(createdAt),
-      modifiedTime: toIsoDate(updatedAt),
-      images: {
-        url: ogImage,
-        width: 1200,
-        height: 630,
-        alt: title,
-      },
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [ogImage],
-    },
-  };
+    image: ogImage,
+    url: postUrl,
+    type: "article",
+    publishedTime: toIsoDate(createdAt),
+    modifiedTime: toIsoDate(updatedAt),
+  });
 }
 
 function getPageJsonLd(post: Post): WithContext<PageSchema> {
@@ -78,14 +66,14 @@ function getPageJsonLd(post: Post): WithContext<PageSchema> {
     image:
       post.metadata.image ||
       `/og/simple?title=${encodeURIComponent(post.metadata.title)}`,
-    // url: `${SITE_INFO.url}${getPostUrl(post)}`,
+    url: `${SITE_CONFIG.url}${getPostUrl(post)}`,
     datePublished: toIsoDate(post.metadata.createdAt),
     dateModified: toIsoDate(post.metadata.updatedAt),
     author: {
       "@type": "Person",
-      //   name: USER.displayName,
-      //   identifier: USER.username,
-      //   image: USER.avatar,
+      name: SITE_CONFIG.author,
+      url: SITE_CONFIG.url,
+      image: `${SITE_CONFIG.url}/images/avatar.png`,
     },
   };
 }

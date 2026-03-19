@@ -1,63 +1,42 @@
 import type { Metadata } from "next";
+import { SITE_CONFIG } from "./site";
 
 export const defaultWebsiteMetadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
-  title: "Ratnesh \u2013 Developer",
-  description:
-    "I'm Ratnesh, a Full-Stack Web Developer. I love to build products.",
-  keywords: [
-    "Ratnesh",
-    "Ratnesh Chipre",
-    "ratnesh chipre",
-    "ratnesh dev",
-    "ratnesh full stack developer",
-    "ratnesh dev portfolio",
-    "ratnesh portfolio",
-    "ratnesh developer portfolio",
-  ],
-};
-
-export const websiteMetadata: Metadata = {
-  ...defaultWebsiteMetadata,
-  keywords: [
-    ...(defaultWebsiteMetadata.keywords || []),
-    "portfolio",
-    "dev portfolio",
-    "web developer",
-    "full-stack developer",
-    "typescript",
-    "react",
-    "next.js",
-  ],
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: `${SITE_CONFIG.name} \u2013 Developer`,
+    template: `%s | ${SITE_CONFIG.name}`,
+  },
+  description: SITE_CONFIG.description,
+  keywords: SITE_CONFIG.keywords,
   authors: [
     {
-      name: "Ratnesh",
-      url: "https://ratneshc.com",
+      name: SITE_CONFIG.author,
+      url: SITE_CONFIG.url,
     },
   ],
-  creator: "Ratnesh",
+  creator: SITE_CONFIG.author,
   openGraph: {
     type: "website",
-    url: process.env.NEXT_PUBLIC_APP_URL!,
-    title: "Ratnesh \u2013 Developer",
-    description:
-      "I'm Ratnesh, a Full-Stack Web Developer. I love to build products.",
-    siteName: "Ratnesh",
+    locale: "en_US",
+    url: SITE_CONFIG.url,
+    title: `${SITE_CONFIG.name} \u2013 Developer`,
+    description: SITE_CONFIG.description,
+    siteName: SITE_CONFIG.name,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/images/opengraph-image.png`,
+        url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: "Ratnesh \u2013 Developer",
+        alt: `${SITE_CONFIG.name} \u2013 Developer`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ratnesh \u2013 Developer",
-    description:
-      "I'm Ratnesh, a Full-Stack Web Developer. I love to build products.",
-    images: [`${process.env.NEXT_PUBLIC_APP_URL}/images/opengraph-image.png`],
+    title: `${SITE_CONFIG.name} \u2013 Developer`,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.ogImage],
     creator: "@ratneshchipre",
   },
   icons: {
@@ -65,46 +44,46 @@ export const websiteMetadata: Metadata = {
   },
 };
 
-interface GenerateWebsiteMetadataParams {
-  title: string;
-  description: string;
+interface GenerateMetadataParams {
+  title?: string;
+  description?: string;
   image?: string;
+  url?: string;
   keywords?: string[];
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
-export const generateWebsiteMetadata = ({
+export function generateWebsiteMetadata({
   title,
   description,
   image,
+  url,
   keywords,
-}: GenerateWebsiteMetadataParams): Metadata => {
-  const baseTitle = title || "Ratnesh \u2013 Developer";
-  const finalTitle = baseTitle.includes("|")
-    ? baseTitle
-    : `${baseTitle} | Ratnesh`;
-  const finalDescription = description || websiteMetadata.description!;
-
-  const defaultOgImage = `${process.env.NEXT_PUBLIC_APP_URL}/images/opengraph-image.png`;
-  const finalImage = image
-    ? `${process.env.NEXT_PUBLIC_APP_URL}/images/${image}`
-    : Array.isArray(websiteMetadata.openGraph?.images)
-      ? (websiteMetadata.openGraph.images[0] as any).url
-      : defaultOgImage;
+  type = "website",
+  publishedTime,
+  modifiedTime,
+}: GenerateMetadataParams = {}): Metadata {
+  const finalTitle = title || `${SITE_CONFIG.name} \u2013 Developer`;
+  const finalDescription = description || SITE_CONFIG.description;
+  const finalImage = image || SITE_CONFIG.ogImage;
+  const finalKeywords = keywords
+    ? [...new Set([...SITE_CONFIG.keywords, ...keywords])]
+    : SITE_CONFIG.keywords;
 
   return {
-    ...websiteMetadata,
     title: finalTitle,
     description: finalDescription,
-    keywords: Array.from(
-      new Set([
-        ...((websiteMetadata.keywords as string[]) || []),
-        ...(keywords || []),
-      ])
-    ),
+    keywords: finalKeywords,
+    alternates: url ? { canonical: url } : undefined,
     openGraph: {
-      ...websiteMetadata.openGraph,
+      url,
+      type,
       title: finalTitle,
       description: finalDescription,
+      publishedTime,
+      modifiedTime,
       images: [
         {
           url: finalImage,
@@ -115,10 +94,10 @@ export const generateWebsiteMetadata = ({
       ],
     },
     twitter: {
-      ...websiteMetadata.twitter,
+      card: "summary_large_image",
       title: finalTitle,
       description: finalDescription,
       images: [finalImage],
     },
   };
-};
+}
