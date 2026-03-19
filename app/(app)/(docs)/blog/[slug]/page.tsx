@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 import Link from "next/link";
+import { getTableOfContents } from "fumadocs-core/content/toc";
+import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 import {
   findNeighbour,
   getAllPosts,
@@ -21,6 +22,7 @@ import PostShareMenu from "@/components/blog/post-share-menu";
 import { Separator } from "@/components/ui/separator";
 import { SITE_CONFIG } from "@/config/site";
 import { generateWebsiteMetadata } from "@/config/metadata";
+import DocsTOC from "@/components/docs-toc";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -91,6 +93,8 @@ export default async function BlogPostPage({
   if (!post) {
     notFound();
   }
+
+  const toc = getTableOfContents(post.content);
 
   const allPosts = getAllPosts();
   const { previous, next } = findNeighbour(allPosts, slug);
@@ -165,7 +169,9 @@ export default async function BlogPostPage({
             <span>|</span>
             <p>{post.metadata.readingTime}</p>
           </div>
-          <Separator className="mt-5 -mb-2" />
+          <Separator className="mt-5 mb-10 2xl:-mb-2" />
+          <DocsTOC items={toc} />
+          <Separator className="mt-10 -mb-2 2xl:hidden" />
           <div>
             <MDX code={post.content} />
           </div>
