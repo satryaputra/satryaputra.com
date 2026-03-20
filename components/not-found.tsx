@@ -22,7 +22,7 @@ export default function NotFound({ className }: { className?: string }) {
         href="/"
         className={cn(
           buttonVariants({ variant: "default" }),
-          "bg-foreground font-geist-sans hover:bg-foreground/90!"
+          "bg-foreground font-geist-sans transition-colors hover:bg-foreground/90! active:scale-98"
         )}
       >
         Go to Home

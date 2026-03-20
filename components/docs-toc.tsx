@@ -28,7 +28,7 @@ export default function DocsTOC({
     <nav
       className={cn(
         "not-prose font-geist-sans",
-        "2xl:fixed 2xl:top-25 2xl:left-[calc(50%+25rem)] 2xl:max-h-[calc(100vh-1rem)] 2xl:w-68 2xl:overflow-y-auto",
+        "no-scrollbar 2xl:fixed 2xl:top-25 2xl:left-[calc(50%+25rem)] 2xl:max-h-100 2xl:w-68 2xl:overflow-y-auto",
         className
       )}
       aria-label="Table of Contents"
