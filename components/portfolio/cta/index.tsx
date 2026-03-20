@@ -13,21 +13,21 @@ export default function CTA() {
     >
       <div className="flex flex-col gap-5 rounded-2xl border p-6 transition-colors hover:bg-muted/10">
         <div className="flex flex-col gap-2">
-          <h2 className="font-geist-pixel-square text-3xl tracking-tight">
+          <h2 className="font-geist-pixel-square text-2xl tracking-tight sm:text-3xl">
             Let&apos;s talk
           </h2>
-          <p className="font-geist-sans text-muted-foreground">
+          <p className="font-geist-sans text-sm text-muted-foreground sm:text-base">
             What&apos;s the best way to start? <br /> A quick call to understand
             your idea and see if we click.
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button
+        <div className="flex">
+          {/* <Button
             variant="outline"
             className="w-fit cursor-pointer font-geist-sans transition-colors active:scale-98"
           >
             Send me a message
-          </Button>
+          </Button> */}
           <Link
             href="https://cal.com/ratneshchipre/30min"
             target="_blank"
