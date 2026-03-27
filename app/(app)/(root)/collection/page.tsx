@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { generateWebsiteMetadata } from "@/config/metadata";
 import CollectionContainer from "@/components/collection/collection-container";
+import NotFound from "@/components/not-found";
 
 export const metadata: Metadata = generateWebsiteMetadata({
   title: "Collection",
@@ -14,7 +15,11 @@ export const metadata: Metadata = generateWebsiteMetadata({
   image: "collection/collection.png",
 });
 
-export default function CollectionPage() {
+export default function Page() {
+  return <NotFound />;
+}
+
+function CollectionPage() {
   return (
     <section className="space-y-12 pt-8" aria-labelledby="collection-heading">
       <header className="flex flex-col gap-3">

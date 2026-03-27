@@ -30,7 +30,7 @@ function FooterDateTime() {
     );
   }
 
-  const timeZone = "Asia/Kolkata";
+  const timeZone = "Asia/Jakarta";
   const isoString = now.toISOString();
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -76,7 +76,7 @@ function FooterDateTime() {
             />
           }
         >
-          {timeLabel} GMT+5:30
+          {timeLabel} GMT+7
         </TooltipTrigger>
         <TooltipContent className="font-geist-sans" sideOffset={10}>
           {timeZone}
@@ -93,23 +93,14 @@ export default function SiteFooter() {
         <FooterDateTime />
         <div>
           <p className="text-center font-geist-mono text-sm text-balance text-muted-foreground">
-            Built by{" "}
-            <a
-              className="text-foreground underline-offset-4 hover:underline"
-              href="https://x.com/ratneshchipre"
-              target="_blank"
-              rel="noopener"
-            >
-              Ratnesh
-            </a>
-            . The source code is available on{" "}
+            Forked from a{" "}
             <a
               className="text-foreground underline-offset-4 hover:underline"
               href="https://github.com/ratneshchipre/ratneshc.com"
               target="_blank"
               rel="noopener"
             >
-              GitHub
+              well-crafted project
             </a>
             .
           </p>

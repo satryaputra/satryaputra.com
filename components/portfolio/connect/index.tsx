@@ -9,29 +9,29 @@ import { HugeiconsIcon } from "@hugeicons/react";
 export default function Connect() {
   const CONNECT_LINKS = [
     {
-      id: "email",
-      icon: Mail01Icon,
-      title: "Email",
-      url: "mailto:ratneshchipre",
-    },
-    {
-      id: "twitter",
-      icon: NewTwitterIcon,
-      title: "Twitter",
-      url: "https://x.com/ratneshchipre",
-    },
-    {
       id: "github",
       icon: GithubIcon,
       title: "GitHub",
-      url: "https://github.com/ratneshchipre",
+      url: "https://github.com/satryaputra",
     },
     {
       id: "linkedin",
       icon: Linkedin02Icon,
       title: "LinkedIn",
-      url: "https://www.linkedin.com/in/ratneshchipre/",
+      url: "https://www.linkedin.com/in/satryaputra/",
     },
+    // {
+    //   id: "twitter",
+    //   icon: NewTwitterIcon,
+    //   title: "Twitter",
+    //   url: "https://x.com/<username>",
+    // },
+    // {
+    //   id: "email",
+    //   icon: Mail01Icon,
+    //   title: "Email",
+    //   url: "mailto:<email>",
+    // },
   ];
 
   return (

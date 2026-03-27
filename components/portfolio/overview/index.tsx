@@ -6,53 +6,21 @@ export default function Overview() {
     <section className="font-geist-sans">
       <div>
         <p className="text-muted-foreground">
-          I&apos;m a 20yo Full-Stack Developer focused on building clean,
-          scalable web products. <br /> <br /> Currently, I&apos;m building{" "}
+          Curiosity about how systems work brought me here. <br /> <br />{" "}
+          Currently, I work as a Backend Engineer at{" "}
           <Link
-            href="https://www.draftlogo.com/"
+            href="https://www.unitedtractors.com/en/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-foreground underline-offset-4 hover:underline"
-            aria-label="Visit draftlogo"
+            aria-label="Visit United Tractors"
           >
-            draftlogo
+            United Tractors
           </Link>{" "}
-          &ndash; a SaaS that helps founders generate professional, minimal
-          logos in seconds. I love crafting elegant web experiences, shipping
-          fast, and turning ideas into real products. <br />
-          <br />
-          Previously, I&apos;ve worked with startups and shipped multiple
-          projects. You can find more of my work on{" "}
-          <Link
-            href="https://x.com/ratneshchipre"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-foreground underline-offset-4 hover:underline"
-            aria-label="Visit twitter"
-          >
-            @ratneshchipre
-          </Link>
-          , explore my code on{" "}
-          <Link
-            href="https://github.com/ratneshchipre"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-foreground underline-offset-4 hover:underline"
-            aria-label="Visit github"
-          >
-            GitHub
-          </Link>
-          , or reach out via{" "}
-          <Link
-            href="mailto:ratneshchipre@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-foreground underline-offset-4 hover:underline"
-            aria-label="Mail to ratneshchipre"
-          >
-            email
-          </Link>
-          <CopyButton value="ratneshchipre@gmail.com" className="ml-0.5" />
+          , building resilient systems integrated with enterprise platforms such
+          as SAP, Salesforce, and Microsoft. I enjoy designing scalable
+          solutions, shipping improvements efficiently, and researching new
+          technologies to drive better engineering standards.
         </p>
       </div>
     </section>

@@ -12,12 +12,12 @@ export default function Page() {
     <div>
       <ProfileHeader />
       <Overview />
-      <Projects />
+      {/* <Projects /> */}
       <Experience />
-      <TechStack />
-      <GitHubContributions />
+      {/* <TechStack /> */}
+      {/* <GitHubContributions /> */}
       <Connect />
-      <CTA />
+      {/* <CTA /> */}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/features/blog/data/posts";
 import { generateWebsiteMetadata } from "@/config/metadata";
+import NotFound from "@/components/not-found";
 
 export const metadata: Metadata = generateWebsiteMetadata({
   title: "Blog",
@@ -11,7 +12,11 @@ export const metadata: Metadata = generateWebsiteMetadata({
   image: "blog/blog.png",
 });
 
-export default function BlogPage() {
+export default function Page() {
+  return <NotFound />;
+}
+
+function BlogPage() {
   const allPosts = getAllPosts();
 
   return (

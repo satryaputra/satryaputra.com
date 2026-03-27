@@ -16,11 +16,9 @@ export default function ProfileHeader() {
           />
         </div>
         <div className="leading-tight">
-          <h2 className="font-geist-sans text-lg font-medium">
-            Ratnesh Chipre
-          </h2>
+          <h2 className="font-geist-sans text-lg font-medium">Satrya Putra</h2>
           <p className="font-geist-pixel-square text-muted-foreground">
-            Full-Stack Web Developer
+            Backend Engineer
           </p>
         </div>
       </div>
