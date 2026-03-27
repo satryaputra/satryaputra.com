@@ -2,47 +2,61 @@ import { Experience } from "@/features/portfolio/types/experiences";
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "collab-vision-infosolutions",
-    companyName: "Collab Vision Infosolutions",
-    companyLogo: "/images/company-logos/collab-vision-infosolutions.svg",
-    companyWebsite: "https://www.collabvision.in",
+    id: "united-tractors",
+    companyName: "PT United Tractors Tbk",
+    companyLogo: "/images/company-logos/united-tractors.webp",
+    companyWebsite: "https://www.unitedtractors.com/en/",
     positions: [
       {
         id: "2",
-        title: "Frontend Developer",
+        title: "Backend Engineer",
         employmentPeriod: {
-          start: "Oct 2025",
+          start: "Feb 2024",
         },
-        employmentType: "Internship",
-        description: [
-          "Built the frontend for a Jewellery Management System to manage retailers, vendors, and girvi customers.",
-          "Managed application state with Redux Toolkit for modules like retailers, vendors, invoices, and inventory.",
-          "Integrated real-time alerts such as low stock and customer birthday notifications.",
-          "Implemented dynamic invoice PDF generation by mapping application data to invoice templates.",
-          "Added PWA features including installable app support, service workers, and offline fallback pages.",
+        employmentType: "Contract",
+        description: [],
+        skills: [
+          "ASP.NET Core",
+          "Microsoft SQL Server",
+          "Docker",
+          "Kubernetes",
+          "Azure DevOps",
         ],
-        skills: ["Next.js", "TypeScript", "TailwindCSS", "shadcn/ui", "Redux"],
         isExpanded: true,
       },
       {
         id: "1",
-        title: "Backend Developer & UI/UX Intern",
+        title: "Full-Stack Web Developer",
         employmentPeriod: {
-          start: "Jun 2025",
-          end: "Aug 2025",
+          start: "Sep 2023",
+          end: "Jan 2024",
         },
         employmentType: "Internship",
-        description: [
-          "UI/UX Design: Designed an intuitive and clean user interface for the mobile app.",
-          "API & Logic: Built a RESTful API with Node.js and Express.",
-          "Security: Implemented user authentication with an OTP-based password reset and registration system.",
-          "Email Automation: Used Brevo to send dynamic emails.",
-          "File Management: Integrated Cloudinary for secure file uploads and storage.",
-          "Deployment: Managed the full deployment process to Render, ensuring production readiness and reliable performance.",
-        ],
-        skills: ["JavaScript", "Node.js", "Express.js", "MongoDB", "Figma"],
+        description: [],
+        skills: ["React", "Tanstack Query", "ASP.NET Core", "PostgreSQL"],
+        isExpanded: true,
       },
     ],
     isCurrentEmployer: true,
+  },
+  {
+    id: "hologram-indonesia",
+    companyName: "Hologram Indonesia",
+    companyLogo: "/images/company-logos/hologram-indonesia.png",
+    companyWebsite: "https://hologramindonesia.com/",
+    positions: [
+      {
+        id: "1",
+        title: "Web Developer",
+        employmentPeriod: {
+          start: "Aug 2023",
+          end: "Sep 2023",
+        },
+        employmentType: "Contract",
+        description: [],
+        skills: ["React", "Tailwind CSS", "Node.js"],
+        isExpanded: true,
+      },
+    ],
   },
 ];
