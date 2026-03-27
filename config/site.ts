@@ -3,30 +3,46 @@ import { NavItem } from "@/types/nav";
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
 export const SITE_CONFIG = {
-  name: "Ratnesh",
-  description:
-    "I'm Ratnesh, a Full-Stack Web Developer. I love to build products.",
+  name: "Satrya Putra",
+  description: "I'm Satrya, a Backend Engineer. I love to build products.",
   url: baseUrl,
   ogImage: `${baseUrl}/images/opengraph-image.png`,
   links: {
-    twitter: "https://x.com/ratneshchipre",
-    github: "https://github.com/ratneshchipre",
+    // twitter: "https://x.com/ratneshchipre",
+    github: "https://github.com/satryaputra",
   },
   keywords: [
-    "Ratnesh",
-    "Ratnesh Chipre",
-    "ratnesh chipre",
-    "ratnesh dev",
-    "ratnesh full stack developer",
-    "ratnesh dev portfolio",
-    "ratnesh portfolio",
-    "ratnesh developer portfolio",
+    "Satrya",
+    "Satrya Eka",
+    "satrya eka",
+    "satrya dev",
+    "satrya backend engineer",
+    "satrya backend",
+    "satrya putra backend",
+    "backend developer",
+    "backend developer portofolio",
+    "satrya dev portfolio",
+    "satrya portfolio",
+    "satrya developer portfolio",
+    "Eka",
+    "Eka Satrya",
+    "Eka Satrya Putra",
+    "M Eka Satrya Putra",
+    "Mohammad Eka Satrya Putra",
+    "eka",
+    "eka satrya",
+    "eka satrya putra",
+    "m eka satrya putra",
+    "Satrya Putra",
+    "satrya putra",
+    "satryaputra",
+    "mohammad eka satrya putra",
     "web developer",
     "typescript",
     "react",
     "next.js",
   ],
-  author: "Ratnesh",
+  author: "Satrya Putra",
 };
 
 export type SiteConfig = typeof SITE_CONFIG;
@@ -40,8 +56,8 @@ export const NAV_ITEMS: NavItem[] = [
     title: "Blog",
     href: "/blog",
   },
-  {
-    title: "Collection",
-    href: "/collection",
-  },
+  // {
+  //   title: "Collection",
+  //   href: "/collection",
+  // },
 ];
