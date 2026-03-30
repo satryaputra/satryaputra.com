@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "@bprogress/next/app";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCommandState } from "cmdk";
+import { useHotkeys } from "react-hotkeys-hook";
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react";
 import {
   ArrowMoveDownLeftIcon,
@@ -34,6 +36,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandShortcut,
 } from "./ui/command";
 import { Button } from "./ui/button";
 import { Kbd, KbdGroup } from "./ui/kbd";
@@ -46,6 +49,7 @@ type CommandLinkItem = {
   title: string;
   href: string;
   icon?: IconSvgElement;
+  shortcut?: string;
   keywords?: string[];
   openInNewTab?: boolean;
 };
@@ -55,16 +59,19 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Home",
     href: "/",
     icon: Home03Icon,
+    shortcut: "GH",
   },
   {
     title: "Blog",
     href: "/blog",
     icon: LicenseIcon,
+    shortcut: "GB",
   },
   {
     title: "Collection",
     href: "/collection",
     icon: CollectionsBookmarkIcon,
+    shortcut: "GC",
   },
 ];
 
@@ -164,17 +171,14 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     [posts]
   );
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+  useHotkeys(
+    "mod+k, slash",
+    (e) => {
+      e.preventDefault();
+      setOpen((open) => !open);
+    },
+    { enableOnFormTags: false }
+  );
 
   return (
     <>
@@ -323,7 +327,12 @@ function CommandLinkGroup({
                 className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
               />
             ) : null}
-            {link.title}
+            <p className="line-clamp-1">{link.title}</p>
+            {link.shortcut && (
+              <CommandShortcut className="font-geist-pixel-square tracking-widest">
+                {link.shortcut}
+              </CommandShortcut>
+            )}
           </CommandItem>
         );
       })}
