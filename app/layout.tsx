@@ -36,7 +36,7 @@ export default function RootLayout({
           data-cf-beacon={JSON.stringify({
             token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN,
           })}
-        ></script>
+        />
       </body>
     </html>
   );

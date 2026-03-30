@@ -6,6 +6,7 @@ import { Separator } from "./ui/separator";
 import MobileNav from "./layout/mobile-nav";
 import { CommandMenu } from "./command-menu";
 import { getAllPosts } from "@/features/blog/data/posts";
+import NavItemGitHub from "./nav-item-github";
 
 export default function SiteHeader() {
   const posts = getAllPosts();
@@ -15,12 +16,15 @@ export default function SiteHeader() {
       <div className="flex w-full items-center justify-end gap-3">
         <DesktopNav items={NAV_ITEMS} />
         <CommandMenu posts={posts} />
-        <div className="flex flex-col items-center justify-center max-sm:hidden">
-          <Separator orientation="vertical" className="ml-2 h-4" />
-        </div>
-        <ThemeToggle />
-        <div className="flex flex-col items-center justify-center sm:hidden">
-          <Separator orientation="vertical" className="h-4" />
+        <div className="flex items-center">
+          <NavItemGitHub />
+          <div className="flex flex-col items-center justify-center max-sm:hidden">
+            <Separator orientation="vertical" className="mx-3 h-4" />
+          </div>
+          <ThemeToggle />
+          <div className="flex flex-col items-center justify-center sm:hidden">
+            <Separator orientation="vertical" className="ml-2.5 h-4" />
+          </div>
         </div>
         <MobileNav items={NAV_ITEMS} />
       </div>
