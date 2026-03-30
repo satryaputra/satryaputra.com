@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_CONFIG } from "./site";
+import { SITE_CONFIG, X_USERNAME } from "./site";
 
 export const defaultWebsiteMetadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -37,7 +37,7 @@ export const defaultWebsiteMetadata: Metadata = {
     title: `${SITE_CONFIG.name} \u2013 Developer`,
     description: SITE_CONFIG.description,
     images: [SITE_CONFIG.ogImage],
-    creator: "@ratneshchipre",
+    creator: X_USERNAME,
   },
   icons: {
     icon: "/images/avatar.png",

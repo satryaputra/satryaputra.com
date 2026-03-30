@@ -45,3 +45,13 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/collection",
   },
 ];
+
+export const X_USERNAME = "@ratneshchipre";
+export const GITHUB_USERNAME = "ratneshchipre";
+export const SOURCE_CODE_GITHUB_REPO = "ratneshchipre/ratneshc.com";
+export const SOURCE_CODE_GITHUB_URL =
+  "https://github.com/ratneshchipre/ratneshc.com";
+
+export const UTM_PARAMS = {
+  utm_source: "ratneshc.com",
+};
