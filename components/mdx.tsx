@@ -23,7 +23,6 @@ import { rehypeNpmCommand } from "@/lib/rehype-npm-command";
 import { remarkCodeImport } from "@/lib/remark-code-import";
 import { FramedImage } from "./embed";
 import { mdxCodeBlockComponents } from "./mdx-code-block";
-import UnmountingDemo from "./blog/unmounting-demo";
 import Callout from "./callout";
 
 const components: MDXRemoteProps["components"] = {
@@ -71,7 +70,6 @@ const components: MDXRemoteProps["components"] = {
     );
   },
   FramedImage,
-  UnmountingDemo,
 };
 
 const options: MDXRemoteProps["options"] = {

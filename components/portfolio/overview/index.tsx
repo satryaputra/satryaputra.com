@@ -6,7 +6,7 @@ export default function Overview() {
     <section className="font-geist-sans">
       <div>
         <p className="text-muted-foreground">
-          Curiosity about how systems work brought me here. <br /> <br />{" "}
+          Curiosity about how systems work brought me here. <br /> <br />
           Currently, I work as a Backend Engineer at{" "}
           <Link
             href="https://www.unitedtractors.com/en/"
@@ -16,11 +16,12 @@ export default function Overview() {
             aria-label="Visit United Tractors"
           >
             United Tractors
-          </Link>{" "}
+          </Link>
           , building resilient systems integrated with enterprise platforms such
-          as SAP, Salesforce, and Microsoft. I enjoy designing scalable
-          solutions, shipping improvements efficiently, and researching new
-          technologies to drive better engineering standards.
+          as SAP, Salesforce, and Microsoft.
+          <br /> <br /> I enjoy designing scalable solutions, shipping
+          improvements efficiently, and researching new technologies to drive
+          better engineering standards.
         </p>
       </div>
     </section>

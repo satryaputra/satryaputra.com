@@ -14,7 +14,14 @@ export const EXPERIENCES: Experience[] = [
           start: "Feb 2024",
         },
         employmentType: "Contract",
-        description: [],
+        description: [
+          "Refactored legacy .NET 2.1 to .NET 8 with ~80% performance improvement",
+          "Develop and maintain 5+ microservices running on Azure Kubernetes Service",
+          "Maintained ETL background jobs for automated data processing integrated with Salesforce, SAP, and internal microservices",
+          "Wrote unit tests and integration tests to ensure code quality and reliability",
+          "Implemented observability (metrics, logging, tracing) using OTel, Prometheus, and Jaeger",
+          "Practiced Agile development using the Scrum methodology",
+        ],
         skills: [
           "ASP.NET Core",
           "Microsoft SQL Server",

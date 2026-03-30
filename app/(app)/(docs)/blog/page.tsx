@@ -12,11 +12,11 @@ export const metadata: Metadata = generateWebsiteMetadata({
   image: "blog/blog.png",
 });
 
-export default function Page() {
-  return <NotFound />;
-}
+// export default function Page() {
+//   return <NotFound />;
+// }
 
-function BlogPage() {
+export default function BlogPage() {
   const allPosts = getAllPosts();
 
   return (
