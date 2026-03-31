@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import useSWR from "swr";
 import { Separator } from "./ui/separator";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { Skeleton } from "./ui/skeleton";
@@ -85,17 +86,38 @@ function FooterDateTime() {
   );
 }
 
+function VisitorCount() {
+  const {
+    data: views,
+    isLoading,
+    error,
+  } = useSWR("page-views", getPageViews, {
+    revalidateOnFocus: false,
+    dedupingInterval: 60000, // Reuse the data for 60 seconds
+  });
+
+  if (isLoading || error || views === undefined) {
+    return <Skeleton className="inline-block h-6 w-7 align-middle" />;
+  }
+
+  const getOrdinal = (n: number) => {
+    const remainder10 = n % 10;
+    const remainder100 = n % 100;
+    if (remainder10 === 1 && remainder100 !== 11) return "st";
+    if (remainder10 === 2 && remainder100 !== 12) return "nd";
+    if (remainder10 === 3 && remainder100 !== 13) return "rd";
+    return "th";
+  };
+
+  return (
+    <>
+      {new Intl.NumberFormat().format(views)}
+      <sup>{getOrdinal(views)}</sup>
+    </>
+  );
+}
+
 export default function SiteFooter() {
-  const [views, setViews] = React.useState<number | null>(null);
-
-  React.useEffect(() => {
-    getPageViews()
-      .then(setViews)
-      .catch((error) => {
-        console.error("Failed to fetch views:", error);
-      });
-  }, []);
-
   return (
     <footer className="mt-10 w-full px-5">
       <div className="flex flex-col items-center gap-3 border-t py-8">
@@ -103,23 +125,7 @@ export default function SiteFooter() {
           <span className="font-geist-mono tracking-tight text-muted-foreground">
             You&apos;re the{" "}
             <span className="text-foreground">
-              {views !== null ? (
-                <>
-                  {new Intl.NumberFormat().format(views)}
-                  <sup>
-                    {(() => {
-                      const remainder10 = views % 10;
-                      const remainder100 = views % 100;
-                      if (remainder10 === 1 && remainder100 !== 11) return "st";
-                      if (remainder10 === 2 && remainder100 !== 12) return "nd";
-                      if (remainder10 === 3 && remainder100 !== 13) return "rd";
-                      return "th";
-                    })()}
-                  </sup>
-                </>
-              ) : (
-                <Skeleton className="inline-block h-6 w-7 align-middle" />
-              )}
+              <VisitorCount />
             </span>{" "}
             visitor
           </span>

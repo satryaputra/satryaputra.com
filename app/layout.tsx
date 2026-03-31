@@ -40,6 +40,7 @@ export default function RootLayout({
         <script
           src="https://page-views-api.ratneshc.com/script"
           data-site="ratneshc.com"
+          data-path="/"
           defer
         />
       </body>
