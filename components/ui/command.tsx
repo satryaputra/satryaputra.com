@@ -23,7 +23,7 @@ function Command({
     <CommandPrimitive
       data-slot="command"
       className={cn(
-        "flex size-full flex-col overflow-hidden rounded-xl! bg-popover p-1 text-popover-foreground",
+        "flex size-full flex-col overflow-hidden rounded-xl! bg-popover text-popover-foreground",
         className
       )}
       {...props}
@@ -70,8 +70,8 @@ function CommandInput({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
-    <div data-slot="command-input-wrapper" className="p-1 pb-0">
-      <InputGroup className="h-8! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:px-2!">
+    <div data-slot="command-input-wrapper" className="border-b p-1">
+      <InputGroup className="h-8! rounded-lg! border-none bg-transparent! shadow-none! *:data-[slot=input-group-addon]:px-2!">
         <InputGroupAddon align="inline-start">
           <HugeiconsIcon
             icon={SearchIcon}
@@ -105,7 +105,7 @@ function CommandList({
     <CommandPrimitive.List
       data-slot="command-list"
       className={cn(
-        "no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
+        "no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto p-1 outline-none",
         className
       )}
       {...props}

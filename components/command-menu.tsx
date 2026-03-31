@@ -317,7 +317,7 @@ function CommandLinkGroup({
           <CommandItem
             key={link.href}
             value={link.href.toLowerCase()}
-            keywords={link.keywords}
+            keywords={[link.title, ...(link.keywords ?? [])]}
             onSelect={() => onLinkSelect(link.href, link.openInNewTab)}
           >
             {Icon ? (
