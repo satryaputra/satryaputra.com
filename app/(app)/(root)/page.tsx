@@ -17,7 +17,7 @@ export default function Page() {
       {/* <TechStack /> */}
       {/* <GitHubContributions /> */}
       <Connect />
-      {/* <CTA /> */}
+      <CTA />
     </div>
   );
 }

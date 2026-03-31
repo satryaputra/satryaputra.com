@@ -17,8 +17,8 @@ export default function CTA() {
             Let&apos;s talk
           </h2>
           <p className="font-geist-sans text-sm text-muted-foreground sm:text-base">
-            What&apos;s the best way to start? <br /> A quick call to understand
-            your idea and see if we click.
+            What&apos;s the best way to start? <br /> I'd love to hear what's on
+            your mind.
           </p>
         </div>
         <div className="flex">
@@ -29,14 +29,14 @@ export default function CTA() {
             Send me a message
           </Button> */}
           <Link
-            href="https://cal.com/ratneshchipre/30min"
+            href="https://cal.com/satryaputra/30min"
             target="_blank"
             className={cn(
               buttonVariants({ variant: "default" }),
               "w-fit cursor-pointer bg-foreground font-geist-sans transition-colors hover:bg-foreground/90! active:scale-98"
             )}
           >
-            Book a call
+            Grab a time
           </Link>
         </div>
       </div>
