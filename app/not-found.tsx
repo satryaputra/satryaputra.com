@@ -8,5 +8,5 @@ export const metadata: Metadata = generateWebsiteMetadata({
 });
 
 export default function NotFoundPage() {
-  return <NotFound className="h-screen" />;
+  return <NotFound className="min-h-screen" />;
 }

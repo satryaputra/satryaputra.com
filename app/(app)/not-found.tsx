@@ -8,5 +8,5 @@ export const metadata: Metadata = generateWebsiteMetadata({
 });
 
 export default function NotFoundPage() {
-  return <NotFound />;
+  return <NotFound className="h-[calc(100svh-17.5rem)]" />;
 }

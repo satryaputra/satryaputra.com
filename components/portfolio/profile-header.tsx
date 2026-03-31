@@ -1,25 +1,8 @@
-"use client";
-
-import * as React from "react";
 import Image from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
-import { getPageViews } from "@/features/portfolio/data/page-views";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { ViewIcon } from "@hugeicons/core-free-icons";
 
 export default function ProfileHeader() {
-  const [views, setViews] = React.useState<number | null>(null);
-
-  React.useEffect(() => {
-    getPageViews()
-      .then(setViews)
-      .catch((error) => {
-        console.error("Failed to fetch views:", error);
-      });
-  }, []);
-
   return (
-    <div className="flex items-start justify-between gap-4 py-8">
+    <div className="flex flex-col py-8">
       <div className="flex items-center gap-3">
         <div className="select-none">
           <Image
@@ -40,14 +23,6 @@ export default function ProfileHeader() {
             Full-Stack Web Developer
           </p>
         </div>
-      </div>
-      <div className="flex items-center gap-1.5 font-geist-mono text-sm text-muted-foreground">
-        <HugeiconsIcon icon={ViewIcon} strokeWidth={2} className="size-4" />
-        {views !== null ? (
-          <span>{new Intl.NumberFormat().format(views)}</span>
-        ) : (
-          <Skeleton className="h-4 w-6" />
-        )}
       </div>
     </div>
   );

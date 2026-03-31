@@ -16,7 +16,7 @@ export default function BlogPage() {
 
   return (
     <section
-      className="h-[calc(100svh-16rem)] space-y-12 pt-8"
+      className="h-[calc(100svh-17.5rem)] space-y-12 pt-8"
       aria-labelledby="blog-heading"
     >
       <header className="flex flex-col gap-3">

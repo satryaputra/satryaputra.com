@@ -4,6 +4,7 @@ import * as React from "react";
 import { Separator } from "./ui/separator";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { Skeleton } from "./ui/skeleton";
+import { getPageViews } from "@/features/portfolio/data/page-views";
 
 function FooterDateTime() {
   const [now, setNow] = React.useState<Date | null>(null);
@@ -53,7 +54,7 @@ function FooterDateTime() {
   const timeLabel = timeFormatter.format(now);
 
   return (
-    <div className="flex items-center justify-center gap-3 text-center font-geist-sans text-sm leading-none text-muted-foreground">
+    <div className="flex items-center justify-center gap-3 text-center font-geist-mono text-sm tracking-tight text-muted-foreground">
       <time
         dateTime={isoString}
         aria-label={dateLabel}
@@ -78,21 +79,54 @@ function FooterDateTime() {
         >
           {timeLabel} GMT+5:30
         </TooltipTrigger>
-        <TooltipContent className="font-geist-sans" sideOffset={10}>
-          {timeZone}
-        </TooltipContent>
+        <TooltipContent sideOffset={10}>{timeZone}</TooltipContent>
       </Tooltip>
     </div>
   );
 }
 
 export default function SiteFooter() {
+  const [views, setViews] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    getPageViews()
+      .then(setViews)
+      .catch((error) => {
+        console.error("Failed to fetch views:", error);
+      });
+  }, []);
+
   return (
     <footer className="mt-10 w-full px-5">
-      <div className="flex flex-col gap-4 border-t py-8">
+      <div className="flex flex-col items-center gap-3 border-t py-8">
+        <div className="flex items-center text-center text-sm">
+          <span className="font-geist-mono tracking-tight text-muted-foreground">
+            You&apos;re the{" "}
+            <span className="text-foreground">
+              {views !== null ? (
+                <>
+                  {new Intl.NumberFormat().format(views)}
+                  <sup>
+                    {(() => {
+                      const remainder10 = views % 10;
+                      const remainder100 = views % 100;
+                      if (remainder10 === 1 && remainder100 !== 11) return "st";
+                      if (remainder10 === 2 && remainder100 !== 12) return "nd";
+                      if (remainder10 === 3 && remainder100 !== 13) return "rd";
+                      return "th";
+                    })()}
+                  </sup>
+                </>
+              ) : (
+                <Skeleton className="inline-block h-6 w-7 align-middle" />
+              )}
+            </span>{" "}
+            visitor
+          </span>
+        </div>
         <FooterDateTime />
         <div>
-          <p className="text-center font-geist-mono text-sm text-balance text-muted-foreground">
+          <p className="text-center font-geist-mono text-sm tracking-tight text-balance text-muted-foreground">
             Built by{" "}
             <a
               className="text-foreground underline-offset-4 hover:underline"
