@@ -5,7 +5,6 @@ export async function getPageViews() {
     `https://page-views-api.ratneshc.com/api/v1/views?site=${UTM_PARAMS.utm_source}&path=/`
   );
   const data = (await res.json()) as { views: number };
-  console.log(data);
 
   return data.views;
 }
