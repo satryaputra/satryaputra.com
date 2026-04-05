@@ -1,6 +1,6 @@
 import {
   GithubIcon,
-  Linkedin02Icon,
+  Linkedin01Icon,
   Mail01Icon,
   NewTwitterIcon,
 } from "@hugeicons/core-free-icons";
@@ -28,7 +28,7 @@ export default function Connect() {
     },
     {
       id: "linkedin",
-      icon: Linkedin02Icon,
+      icon: Linkedin01Icon,
       title: "LinkedIn",
       url: "https://www.linkedin.com/in/ratneshchipre/",
     },
