@@ -2,13 +2,13 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { cache } from "react";
-import { Post, PostMetadata } from "@/features/blog/types/post";
+import { Doc, DocMetadata } from "@/features/doc/types/document";
 
 function parseFrontmatter(fileContent: string) {
   const file = matter(fileContent);
 
   return {
-    metadata: file.data as PostMetadata,
+    metadata: file.data as DocMetadata,
     content: file.content,
   };
 }
@@ -25,7 +25,7 @@ function readMDXFile(filePath: string) {
 function getMDXData(dir: string) {
   const mdxFiles = getMDXFiles(dir);
 
-  return mdxFiles.map<Post>((file) => {
+  return mdxFiles.map<Doc>((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
 
     const slug = path.basename(file, path.extname(file));
@@ -38,12 +38,9 @@ function getMDXData(dir: string) {
   });
 }
 
-export const getAllPosts = cache(() => {
-  return getMDXData(path.join(process.cwd(), "src/features/blog/content")).sort(
+export const getAllDocs = cache(() => {
+  return getMDXData(path.join(process.cwd(), "src/features/doc/content")).sort(
     (a, b) => {
-      //   if (a.metadata.pinned && !b.metadata.pinned) return -1;
-      //   if (!a.metadata.pinned && b.metadata.pinned) return 1;
-
       return (
         new Date(b.metadata.createdAt).getTime() -
         new Date(a.metadata.createdAt).getTime()
@@ -52,22 +49,22 @@ export const getAllPosts = cache(() => {
   );
 });
 
-export function getPostBySlug(slug: string) {
-  return getAllPosts().find((post) => post.slug === slug);
+export function getDocBySlug(slug: string) {
+  return getAllDocs().find((doc) => doc.slug === slug);
 }
 
-export function getPostsByCategory(category: string) {
-  return getAllPosts().filter((post) => post.metadata?.category === category);
+export function getDocsByCategory(category: string) {
+  return getAllDocs().filter((doc) => doc.metadata?.category === category);
 }
 
-export function findNeighbour(posts: Post[], slug: string) {
-  const len = posts.length;
+export function findNeighbour(docs: Doc[], slug: string) {
+  const len = docs.length;
 
   for (let i = 0; i < len; ++i) {
-    if (posts[i].slug === slug) {
+    if (docs[i].slug === slug) {
       return {
-        previous: i > 0 ? posts[i - 1] : null,
-        next: i < len - 1 ? posts[i + 1] : null,
+        previous: i > 0 ? docs[i - 1] : null,
+        next: i < len - 1 ? docs[i + 1] : null,
       };
     }
   }

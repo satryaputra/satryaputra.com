@@ -5,11 +5,11 @@ import { getTableOfContents } from "fumadocs-core/content/toc";
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 import {
   findNeighbour,
-  getAllPosts,
-  getPostBySlug,
-} from "@/features/blog/data/posts";
+  getAllDocs,
+  getDocBySlug,
+} from "@/features/doc/data/documents";
 import { MDX } from "@/components/mdx";
-import { Post } from "@/features/blog/types/post";
+import { Doc } from "@/features/doc/types/document";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/typography";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -25,9 +25,9 @@ import { generateWebsiteMetadata } from "@/config/metadata";
 import DocsTOC from "@/components/docs-toc";
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
+  const docs = getAllDocs();
+  return docs.map((doc) => ({
+    slug: doc.slug,
   }));
 }
 
@@ -37,40 +37,40 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const doc = getDocBySlug(slug);
 
-  if (!post) {
+  if (!doc) {
     return notFound();
   }
 
-  const { title, description, image, createdAt, updatedAt } = post.metadata;
+  const { title, description, image, createdAt, updatedAt } = doc.metadata;
 
-  const postUrl = getPostUrl(post);
+  const docUrl = getDocUrl(doc);
   const ogImage = image || "/images/opengraph-image.png";
 
   return generateWebsiteMetadata({
     title,
     description,
     image: ogImage,
-    url: postUrl,
+    url: docUrl,
     type: "article",
     publishedTime: toIsoDate(createdAt),
     modifiedTime: toIsoDate(updatedAt),
   });
 }
 
-function getPageJsonLd(post: Post): WithContext<PageSchema> {
+function getPageJsonLd(doc: Doc): WithContext<PageSchema> {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.metadata.title,
-    description: post.metadata.description,
+    headline: doc.metadata.title,
+    description: doc.metadata.description,
     image:
-      post.metadata.image ||
-      `/og/simple?title=${encodeURIComponent(post.metadata.title)}`,
-    url: `${SITE_CONFIG.url}${getPostUrl(post)}`,
-    datePublished: toIsoDate(post.metadata.createdAt),
-    dateModified: toIsoDate(post.metadata.updatedAt),
+      doc.metadata.image ||
+      `/og/simple?title=${encodeURIComponent(doc.metadata.title)}`,
+    url: `${SITE_CONFIG.url}${getDocUrl(doc)}`,
+    datePublished: toIsoDate(doc.metadata.createdAt),
+    dateModified: toIsoDate(doc.metadata.updatedAt),
     author: {
       "@type": "Person",
       name: SITE_CONFIG.author,
@@ -88,23 +88,23 @@ export default async function BlogPostPage({
   }>;
 }) {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const doc = getDocBySlug(slug);
 
-  if (!post) {
+  if (!doc) {
     notFound();
   }
 
-  const toc = getTableOfContents(post.content);
+  const toc = getTableOfContents(doc.content);
 
-  const allPosts = getAllPosts();
-  const { previous, next } = findNeighbour(allPosts, slug);
+  const allDocs = getAllDocs();
+  const { previous, next } = findNeighbour(allDocs, slug);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(getPageJsonLd(doc)).replace(/</g, "\\u003c"),
         }}
       />
       <div className="flex flex-col space-y-12 pt-10">
@@ -121,7 +121,7 @@ export default async function BlogPostPage({
             Blog
           </Link>
           <div className="flex items-center gap-2">
-            <PostShareMenu url={getPostUrl(post)} />
+            <PostShareMenu url={getDocUrl(doc)} />
             {previous && (
               <Link href={`/blog/${previous.slug}`}>
                 <Button variant="secondary" className="cursor-pointer px-2">
@@ -150,14 +150,14 @@ export default async function BlogPostPage({
         </div>
         <Prose className="font-geist-sans">
           <h1 className="mb-1 text-3xl font-semibold tracking-tight">
-            {post.metadata.title.includes("|")
-              ? post.metadata.title.split("|")[0].trim()
-              : post.metadata.title}
+            {doc.metadata.title.includes("|")
+              ? doc.metadata.title.split("|")[0].trim()
+              : doc.metadata.title}
           </h1>
           <div className="flex items-center gap-6 text-muted-foreground">
             <p>
-              {post.metadata.createdAt
-                ? new Date(post.metadata.createdAt)
+              {doc.metadata.createdAt
+                ? new Date(doc.metadata.createdAt)
                     .toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
@@ -167,13 +167,13 @@ export default async function BlogPostPage({
                 : ""}
             </p>
             <span>|</span>
-            <p>{post.metadata.readingTime}</p>
+            <p>{doc.metadata.readingTime}</p>
           </div>
           <Separator className="mt-5 mb-10 xl:-mb-2" />
           <DocsTOC items={toc} />
           <Separator className="mt-10 -mb-2 xl:hidden" />
           <div>
-            <MDX code={post.content} />
+            <MDX code={doc.content} />
           </div>
         </Prose>
       </div>
@@ -181,9 +181,9 @@ export default async function BlogPostPage({
   );
 }
 
-function getPostUrl(post: Post) {
-  const isComponent = post.metadata.category === "components";
-  return isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`;
+function getDocUrl(doc: Doc) {
+  const isComponent = doc.metadata.category === "components";
+  return isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`;
 }
 
 function toIsoDate(value?: string) {

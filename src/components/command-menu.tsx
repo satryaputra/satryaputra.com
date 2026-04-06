@@ -41,7 +41,7 @@ import {
 import { Button } from "./ui/button";
 import { Kbd, KbdGroup } from "./ui/kbd";
 import { cn } from "@/lib/utils";
-import { Post } from "@/features/blog/types/post";
+import { Doc } from "@/features/doc/types/document";
 import { Separator } from "./ui/separator";
 import { InputGroupButton } from "./ui/input-group";
 
@@ -124,7 +124,7 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = [
   },
 ];
 
-export function CommandMenu({ posts }: { posts: Post[] }) {
+export function CommandMenu({ docs }: { docs: Doc[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
@@ -164,11 +164,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
   const { blogLinks } = React.useMemo(
     () => ({
-      blogLinks: posts
-        .filter((post: Post) => post.metadata.category !== "components")
-        .map(postToCommandLinkItem),
+      blogLinks: docs
+        .filter((doc: Doc) => doc.metadata.category !== "components")
+        .map(docToCommandLinkItem),
     }),
-    [posts]
+    [docs]
   );
 
   useHotkeys(
@@ -421,16 +421,16 @@ function CommandMenuFooter() {
   );
 }
 
-function postToCommandLinkItem(post: Post): CommandLinkItem {
-  const isComponent = post.metadata.category === "components";
+function docToCommandLinkItem(doc: Doc): CommandLinkItem {
+  const isComponent = doc.metadata.category === "components";
 
-  const title = post.metadata.title.includes("|")
-    ? post.metadata.title.split("|")[0].trim()
-    : post.metadata.title;
+  const title = doc.metadata.title.includes("|")
+    ? doc.metadata.title.split("|")[0].trim()
+    : doc.metadata.title;
 
   return {
     title,
-    href: isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`,
+    href: isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`,
     keywords: isComponent ? ["component"] : undefined,
     icon: isComponent ? ComputerIcon : TextAlignLeft01Icon,
   };

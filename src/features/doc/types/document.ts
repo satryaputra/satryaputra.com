@@ -1,4 +1,4 @@
-export type PostMetadata = {
+export type DocMetadata = {
   title: string;
   description: string;
   image?: string;
@@ -10,13 +10,13 @@ export type PostMetadata = {
   updatedAt: string;
 };
 
-export type Post = {
-  metadata: PostMetadata;
+export type Doc = {
+  metadata: DocMetadata;
   slug: string;
   content: string;
 };
 
-export type PostPreview = {
+export type DocPreview = {
   slug: string;
   title: string;
   category?: string;

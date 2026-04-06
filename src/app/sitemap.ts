@@ -1,23 +1,24 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/features/blog/data/posts";
+import { getAllDocs, getDocsByCategory } from "@/features/doc/data/documents";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "";
-  const posts = getAllPosts();
+  const docs = getAllDocs();
 
-  const blogPosts = posts.map((post) => ({
-    url: `${baseUrl}${
-      post.metadata.category === "components"
-        ? `/components/${post.slug}`
-        : `/blog/${post.slug}`
-    }`,
-    lastModified: new Date(post.metadata.updatedAt || post.metadata.createdAt),
+  const blogs = docs.map((doc) => ({
+    url: `${baseUrl}/blog/${doc.slug}`,
+    lastModified: new Date(doc.metadata.updatedAt || doc.metadata.createdAt),
   }));
 
-  const routes = ["", "/blog", "/collection"].map((route) => ({
+  const components = getDocsByCategory("components").map((doc) => ({
+    url: `${baseUrl}/components/${doc.slug}`,
+    lastModified: new Date(doc.metadata.updatedAt).toISOString(),
+  }));
+
+  const routes = ["", "/blog", "/components", "/collection"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
   }));
 
-  return [...routes, ...blogPosts];
+  return [...routes, ...blogs, ...components];
 }

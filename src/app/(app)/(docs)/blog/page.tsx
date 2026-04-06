@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/features/blog/data/posts";
+import { getAllDocs } from "@/features/doc/data/documents";
 import { generateWebsiteMetadata } from "@/config/metadata";
+import { Doc } from "@/features/doc/types/document";
 
 export const metadata: Metadata = generateWebsiteMetadata({
   title: "Blog",
@@ -12,7 +13,7 @@ export const metadata: Metadata = generateWebsiteMetadata({
 });
 
 export default function BlogPage() {
-  const allPosts = getAllPosts();
+  const blogs = getAllDocs().filter((doc) => doc.metadata.category === "blogs");
 
   return (
     <section
@@ -29,20 +30,20 @@ export default function BlogPage() {
         </p>
       </header>
       <div className="group divide-y divide-border font-geist-sans *:py-3 first:*:pt-0">
-        {allPosts.map((post) => (
+        {blogs.map((doc: Doc) => (
           <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
+            key={doc.slug}
+            href={`/blog/${doc.slug}`}
             className="flex w-full cursor-pointer items-center justify-between gap-5 text-foreground group-hover:text-ring hover:text-foreground [&_span]:text-muted-foreground [&_span]:group-hover:text-ring hover:[&_span]:text-muted-foreground"
           >
             <h3 className="truncate">
-              {post.metadata.title.includes("|")
-                ? post.metadata.title.split("|")[0].trim()
-                : post.metadata.title}
+              {doc.metadata.title.includes("|")
+                ? doc.metadata.title.split("|")[0].trim()
+                : doc.metadata.title}
             </h3>
             <span className="shrink-0 text-[0.9rem]">
-              {post.metadata.createdAt
-                ? new Date(post.metadata.createdAt)
+              {doc.metadata.createdAt
+                ? new Date(doc.metadata.createdAt)
                     .toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
