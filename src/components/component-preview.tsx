@@ -62,7 +62,7 @@ export default function ComponentPreview({
     >
       <div data-slot="preview" className="rounded-t-xl border p-2">
         {(canReplay || openInV0Url) && (
-          <div data-slot="buttons" className="mb-2 flex justify-end gap-1">
+          <div data-slot="buttons" className="mb-2 flex justify-end">
             {canReplay && (
               <Tooltip>
                 <TooltipTrigger
@@ -70,13 +70,13 @@ export default function ComponentPreview({
                     <Button
                       className="cursor-pointer border-none"
                       variant="ghost"
-                      size="icon-sm"
+                      size="icon-lg"
                       onClick={() => setReplay((v) => v + 1)}
                     >
                       <HugeiconsIcon
                         icon={RepeatIcon}
                         strokeWidth={2}
-                        className="size-4"
+                        className="size-4.5"
                       />
                     </Button>
                   }

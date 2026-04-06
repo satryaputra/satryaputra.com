@@ -1,4 +1,4 @@
-import { StarsTravel } from "@/registry/components/stars-travel/stars-travel";
+import { StarsTravel } from "@/registry/components/stars-travel";
 
 export default function StarsTravelDemo() {
   return (
@@ -7,9 +7,7 @@ export default function StarsTravelDemo() {
         className="pointer-events-none absolute inset-0"
         svgOptions={{ duration: 2 }}
       />
-      <h1 className="relative z-10 font-geist-pixel-square text-3xl tracking-tight">
-        Stars Travel
-      </h1>
+      <h1 className="relative z-10 text-3xl">Stars Travel</h1>
     </div>
   );
 }

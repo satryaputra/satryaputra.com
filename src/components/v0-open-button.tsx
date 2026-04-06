@@ -15,13 +15,13 @@ export default function OpenInV0Button({
       rel="noopener"
       aria-label="Open in v0"
       className={cn(
-        buttonVariants({ variant: "ghost", size: "icon-sm" }),
+        buttonVariants({ variant: "ghost", size: "icon-lg" }),
         "not-prose border-none",
         className
       )}
       {...props}
     >
-      <Icons.v0 className="size-4.5" />
+      <Icons.v0 className="size-5" />
     </a>
   );
 }
