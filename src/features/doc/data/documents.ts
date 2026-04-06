@@ -1,7 +1,9 @@
 import fs from "fs";
-import matter from "gray-matter";
 import path from "path";
+
 import { cache } from "react";
+import matter from "gray-matter";
+
 import { Doc, DocMetadata } from "@/features/doc/types/document";
 
 function parseFrontmatter(fileContent: string) {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import { SITE_CONFIG, X_USERNAME } from "./site";
 
 export const defaultWebsiteMetadata: Metadata = {

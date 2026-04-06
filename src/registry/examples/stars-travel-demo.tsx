@@ -2,16 +2,14 @@ import { StarsTravel } from "@/registry/components/stars-travel/stars-travel";
 
 export default function StarsTravelDemo() {
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border">
+    <div className="relative flex min-h-72 w-full flex-col items-center justify-center overflow-hidden">
       <StarsTravel
-        className="pointer-events-none absolute inset-0 h-full"
+        className="pointer-events-none absolute inset-0"
         svgOptions={{ duration: 2 }}
       />
-      <div className="relative z-10 flex h-full flex-col items-center justify-center gap-5 p-6 text-center">
-        <h1 className="font-geist-pixel-square text-3xl tracking-tight">
-          Stars Travel
-        </h1>
-      </div>
+      <h1 className="relative z-10 font-geist-pixel-square text-3xl tracking-tight">
+        Stars Travel
+      </h1>
     </div>
   );
 }
