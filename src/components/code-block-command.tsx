@@ -43,21 +43,20 @@ export function CodeBlockCommand({
         }}
       >
         <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-border">
-          <TabsList className="h-10 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
+          <TabsList className="h-11! rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:me-3 [&_svg]:size-4 [&_svg]:text-muted-foreground">
             {getIconForPackageManager(packageManager)}
-
             {Object.entries(tabs).map(([key]) => {
               return (
                 <TabsTrigger
                   key={key}
-                  className="h-7 rounded-lg p-0 px-2 font-mono"
+                  className="h-7 rounded-md p-0 px-2 font-geist-mono data-active:bg-muted/70!"
                   value={key}
                 >
                   {key}
                 </TabsTrigger>
               );
             })}
-            <TabsIndicator className="h-0.5 translate-y-0 rounded-none bg-foreground shadow-none dark:bg-foreground" />
+            {/* <TabsIndicator className="h-0.5 translate-y-0 rounded-none bg-foreground shadow-none dark:bg-foreground" /> */}
           </TabsList>
         </div>
         {Object.entries(tabs).map(([key, value]) => {
@@ -67,9 +66,8 @@ export function CodeBlockCommand({
                 <code
                   data-slot="code-block"
                   data-language="bash"
-                  className="font-mono text-sm leading-none text-muted-foreground"
+                  className="font-geist-mono text-sm leading-none text-muted-foreground"
                 >
-                  <span className="select-none">$ </span>
                   {value}
                 </code>
               </pre>
@@ -78,7 +76,7 @@ export function CodeBlockCommand({
         })}
       </Tabs>
       <CopyButton
-        className="absolute top-2 right-2 z-10 rounded-md border-none"
+        className="absolute top-2 right-2 z-10 h-7 w-7 rounded-md border bg-muted/70 backdrop-blur-xs hover:bg-muted!"
         size="icon-xs"
         value={tabs[packageManager] || ""}
         event="copy_npm_command"

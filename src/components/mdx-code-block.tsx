@@ -27,7 +27,13 @@ export const mdxCodeBlockComponents = {
     return (
       <figcaption {...props}>
         {iconExtension}
-        {hasCodeTitle ? <p className="truncate">{children}</p> : children}
+        {hasCodeTitle ? (
+          <p className="truncate font-geist-mono text-sm font-normal">
+            {children}
+          </p>
+        ) : (
+          children
+        )}
       </figcaption>
     );
   },
@@ -75,11 +81,11 @@ export const mdxCodeBlockComponents = {
         </pre>
         {__rawString__ && (
           <>
-            <div className="absolute top-3 right-3 z-20 flex items-center gap-2">
+            <div className="absolute top-3 right-2 z-20 flex items-center gap-2">
               <CopyButton
                 className={cn(
-                  "h-8 w-8 rounded-lg border bg-muted/70 backdrop-blur-xs hover:bg-muted!",
-                  __withMeta__ && "translate-y-[-3.35rem]"
+                  "h-7 w-7 rounded-md border bg-muted/70 backdrop-blur-xs hover:bg-muted!",
+                  __withMeta__ && "translate-y-[-2.95rem]"
                 )}
                 value={__rawString__}
                 event="copy_code_block"

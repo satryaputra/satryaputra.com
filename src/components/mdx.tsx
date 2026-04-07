@@ -81,7 +81,13 @@ const components: MDXRemoteProps["components"] = {
     />
   ),
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3 className={cn("step font-medium", className)} {...props} />
+    <h3
+      className={cn(
+        "step text-[1.05rem]! font-medium text-foreground/80",
+        className
+      )}
+      {...props}
+    />
   ),
   a: ({ href, ...props }: React.ComponentProps<"a">) => {
     const isInternalLink =
@@ -105,10 +111,13 @@ const components: MDXRemoteProps["components"] = {
   TabsTrigger,
   TabsContent,
   TabsListInstallType: () => (
-    <TabsList>
-      <TabsTrigger value="cli">Command</TabsTrigger>
-      <TabsTrigger value="manual">Manual</TabsTrigger>
-      <TabsIndicator />
+    <TabsList variant="line" className="gap-3">
+      <TabsTrigger value="cli" className="text-base">
+        Command
+      </TabsTrigger>
+      <TabsTrigger value="manual" className="text-base">
+        Manual
+      </TabsTrigger>
     </TabsList>
   ),
   FramedImage,

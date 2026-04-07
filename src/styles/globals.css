@@ -191,6 +191,7 @@
   }
 }
 
+/* Thanks @ncdai */
 @layer components {
   /* Code Blocks */
   [data-rehype-pretty-code-figure] {
@@ -283,6 +284,14 @@
     width: var(--fade-width, 6rem);
     height: 2.5rem;
     background: var(--fade-background, var(--fade-linear-gradient));
+  }
+}
+
+@utility step {
+  counter-increment: step;
+  &::before {
+    @apply mr-2 inline-flex size-7 items-center justify-center rounded-full border border-muted-foreground/15 bg-muted text-center -indent-px text-sm font-medium text-muted-foreground md:absolute md:-mt-0.5 md:-ml-11.5 md:size-8;
+    content: counter(step);
   }
 }
 
