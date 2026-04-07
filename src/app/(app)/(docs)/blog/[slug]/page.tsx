@@ -8,6 +8,7 @@ import {
   findNeighbour,
   getAllDocs,
   getDocBySlug,
+  getDocsByCategory,
 } from "@/features/doc/data/documents";
 import { MDX } from "@/components/mdx";
 import { Doc } from "@/features/doc/types/document";
@@ -97,7 +98,7 @@ export default async function BlogPostPage({
 
   const toc = getTableOfContents(doc.content);
 
-  const allDocs = getAllDocs();
+  const allDocs = getDocsByCategory("blogs");
   const { previous, next } = findNeighbour(allDocs, slug);
 
   return (
