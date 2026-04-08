@@ -9,7 +9,6 @@ updatedAt: 2026-04-07
 ---
 
 <ComponentPreview
-  className="text-foreground"
   name="stars-travel-demo"
   openInV0Url="https://ratneshc.com/r/stars-travel.json"
   canReplay
@@ -71,37 +70,11 @@ import { StarsTravel } from "@/components/stars-travel";
 
 Adjust the `duration` to make the travel effect faster or slower.
 
-```tsx
-<StarsTravel svgOptions={{ duration: 1.5 }} />
-```
-
-### With Foreground Content
-
-The component accepts `children` which are rendered on top of the animation.
-
-```tsx
-<StarsTravel className="min-h-72 rounded-xl border">
-  <div className="flex h-full flex-col items-center justify-center p-6 text-center">
-    <h3 className="text-2xl font-bold tracking-tight">Warp Speed</h3>
-    <p className="text-muted-foreground">
-      Content layered perfectly above the stars.
-    </p>
-  </div>
-</StarsTravel>
-```
-
-### As an Absolute Background
-
-Use it as a background layer for an existing container.
-
-```tsx
-<div className="relative h-64 w-full overflow-hidden rounded-lg bg-black text-white">
-  <StarsTravel className="pointer-events-none absolute inset-0" />
-  <div className="relative z-10 p-8">
-     {/* Your Content here */}
-  </div>
-</div>
-```
+<ComponentPreview
+  name="stars-travel-duration-demo"
+  openInV0Url="https://ratneshc.com/r/stars-travel-duration-demo.json"
+  canReplay
+/>
 
 ## API Reference
 

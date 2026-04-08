@@ -14,4 +14,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "stars-travel-duration-demo",
+    type: "registry:example",
+    registryDependencies: [getRegistryItemUrl("stars-travel")],
+    files: [
+      {
+        path: "examples/stars-travel-duration-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

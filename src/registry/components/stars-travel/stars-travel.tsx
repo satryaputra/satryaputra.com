@@ -4,17 +4,23 @@ import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
+export type StarsTravelProps = {
+  /** Children nodes to render within the StarsTravel component. */
+  children?: React.ReactNode;
+  /** Optional CSS class names for the container. */
+  className?: string;
+  /** SVG animation options. */
+  svgOptions?: {
+    /** Duration of the SVG animation in milliseconds. */
+    duration?: number;
+  };
+};
+
 export function StarsTravel({
   children,
   className,
   svgOptions,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-  svgOptions?: {
-    duration?: number;
-  };
-}) {
+}: StarsTravelProps) {
   return (
     <div className={cn("relative w-full overflow-hidden", className)}>
       <SVG svgOptions={svgOptions} />
@@ -32,13 +38,15 @@ const pathVariants = {
   },
 };
 
-const SVG = ({
-  svgOptions,
-}: {
+export type SVGProps = {
+  /** SVG animation options. */
   svgOptions?: {
+    /** Duration of the SVG animation in milliseconds. */
     duration?: number;
   };
-}) => {
+};
+
+const SVG = ({ svgOptions }: SVGProps) => {
   const paths = [
     "M720 450 L1431.52 -15.0078",
     "M720 450 L1250.42 -214.196",
@@ -99,7 +107,7 @@ const SVG = ({
           initial="initial"
           animate="animate"
           transition={{
-            duration: svgOptions?.duration || 3,
+            duration: svgOptions?.duration || 2,
             ease: "easeIn",
             repeat: Infinity,
             repeatType: "loop",

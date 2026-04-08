@@ -58,4 +58,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "stars-travel-duration-demo": {
+    name: "stars-travel-duration-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/stars-travel-duration-demo.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/stars-travel-duration-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "stars-travel-duration-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
 }
