@@ -1,12 +1,24 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/nav";
 
 function NavItem({ title, href, className }: NavItem & { className?: string }) {
+  const pathname = usePathname();
+
+  const isActive =
+    pathname === href || (href !== "/" && pathname.startsWith(href));
+
   return (
     <a
       href={href}
       className={cn(
-        "font-geist-pixel-square text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
+        "font-geist-pixel-square text-sm font-medium transition-colors",
+        isActive
+          ? "text-foreground"
+          : "text-muted-foreground hover:text-foreground",
         className
       )}
     >
@@ -23,7 +35,7 @@ export default function Nav({
   className?: string;
 }) {
   return (
-    <nav className={cn("flex items-center gap-8", className)}>
+    <nav className={cn("flex items-center gap-5", className)}>
       {items.map(({ title, href }) => {
         return <NavItem key={href} title={title} href={href} />;
       })}
