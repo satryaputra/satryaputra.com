@@ -7,8 +7,9 @@ export function KeyboardShortcuts() {
   const router = useRouter();
 
   useHotkeys("g>h", () => router.push("/"));
+  useHotkeys("g>c", () => router.push("/components"));
   useHotkeys("g>b", () => router.push("/blog"));
-  useHotkeys("g>c", () => router.push("/collection"));
+  useHotkeys("g>l", () => router.push("/collection"));
 
   return null;
 }

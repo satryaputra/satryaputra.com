@@ -46,11 +46,12 @@ import { Button } from "./ui/button";
 import { Kbd, KbdGroup } from "./ui/kbd";
 import { Separator } from "./ui/separator";
 import { InputGroupButton } from "./ui/input-group";
+import { ComponentIcon, Icons } from "./icons";
 
 type CommandLinkItem = {
   title: string;
   href: string;
-  icon?: IconSvgElement;
+  icon?: IconSvgElement | React.ReactNode;
   shortcut?: string;
   keywords?: string[];
   openInNewTab?: boolean;
@@ -64,6 +65,14 @@ const MENU_LINKS: CommandLinkItem[] = [
     shortcut: "GH",
   },
   {
+    title: "Components",
+    href: "/components",
+    icon: (
+      <Icons.react className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!" />
+    ),
+    shortcut: "GC",
+  },
+  {
     title: "Blog",
     href: "/blog",
     icon: LicenseIcon,
@@ -73,7 +82,7 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Collection",
     href: "/collection",
     icon: CollectionsBookmarkIcon,
-    shortcut: "GC",
+    shortcut: "GL",
   },
 ];
 
@@ -164,10 +173,13 @@ export function CommandMenu({ docs }: { docs: Doc[] }) {
     [setTheme]
   );
 
-  const { blogLinks } = React.useMemo(
+  const { componentLinks, blogLinks } = React.useMemo(
     () => ({
+      componentLinks: docs
+        .filter((doc: Doc) => doc.metadata.category === "components")
+        .map(docToCommandLinkItem),
       blogLinks: docs
-        .filter((doc: Doc) => doc.metadata.category !== "components")
+        .filter((doc: Doc) => doc.metadata.category === "blogs")
         .map(docToCommandLinkItem),
     }),
     [docs]
@@ -224,6 +236,14 @@ export function CommandMenu({ docs }: { docs: Doc[] }) {
             <CommandLinkGroup
               heading="Portfolio"
               links={PORTFOLIO_LINKS}
+              onLinkSelect={handleOpenLink}
+            />
+            <CommandLinkGroup
+              heading="Components"
+              links={componentLinks}
+              fallbackIcon={
+                <Icons.react className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!" />
+              }
               onLinkSelect={handleOpenLink}
             />
             <CommandLinkGroup
@@ -307,7 +327,7 @@ function CommandLinkGroup({
 }: {
   heading: string;
   links: CommandLinkItem[];
-  fallbackIcon?: IconSvgElement;
+  fallbackIcon?: IconSvgElement | React.ReactNode;
   onLinkSelect: (href: string, openInNewTab?: boolean) => void;
 }) {
   return (
@@ -323,11 +343,15 @@ function CommandLinkGroup({
             onSelect={() => onLinkSelect(link.href, link.openInNewTab)}
           >
             {Icon ? (
-              <HugeiconsIcon
-                icon={Icon}
-                strokeWidth={2}
-                className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
-              />
+              React.isValidElement(Icon) ? (
+                Icon
+              ) : (
+                <HugeiconsIcon
+                  icon={Icon as IconSvgElement}
+                  strokeWidth={2}
+                  className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
+                />
+              )
             ) : null}
             <p className="line-clamp-1">{link.title}</p>
             {link.shortcut && (
@@ -434,6 +458,13 @@ function docToCommandLinkItem(doc: Doc): CommandLinkItem {
     title,
     href: isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`,
     keywords: isComponent ? ["component"] : undefined,
-    icon: isComponent ? ComputerIcon : TextAlignLeft01Icon,
+    icon: isComponent ? (
+      <ComponentIcon
+        variant={doc.slug}
+        className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!"
+      />
+    ) : (
+      TextAlignLeft01Icon
+    ),
   };
 }
