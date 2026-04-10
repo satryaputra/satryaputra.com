@@ -48,15 +48,15 @@ export default function MobileNav({ items }: { items: NavItem[] }) {
               <DropdownMenuItem
                 key={item.href}
                 onSelect={() => setOpen(false)}
-                className="bg-transparent! hover:bg-transparent!"
+                className="bg-transparent! focus:bg-transparent! focus:text-inherit!"
               >
                 <Link
                   href={item.href}
                   className={cn(
                     "w-full font-geist-pixel-square text-sm font-medium transition-colors",
                     isActive
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-foreground!"
+                      : "text-muted-foreground! hover:text-foreground!"
                   )}
                 >
                   {item.title}
