@@ -81,7 +81,7 @@ export default function ComponentPreview({
                     </Button>
                   }
                 />
-                <TooltipContent>
+                <TooltipContent sideOffset={10}>
                   <p>Replay</p>
                 </TooltipContent>
               </Tooltip>
