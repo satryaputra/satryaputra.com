@@ -64,14 +64,14 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: Home03Icon,
     shortcut: "GH",
   },
-  {
-    title: "Components",
-    href: "/components",
-    icon: (
-      <Icons.react className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!" />
-    ),
-    shortcut: "GC",
-  },
+  // {
+  //   title: "Components",
+  //   href: "/components",
+  //   icon: (
+  //     <Icons.react className="text-muted-foreground group-data-selected/command-item:text-muted-foreground!" />
+  //   ),
+  //   shortcut: "GC",
+  // },
   {
     title: "Blog",
     href: "/blog",

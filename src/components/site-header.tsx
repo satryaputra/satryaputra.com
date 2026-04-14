@@ -5,10 +5,10 @@ import ThemeToggle from "./theme-toggle";
 import { Separator } from "./ui/separator";
 import MobileNav from "./layout/mobile-nav";
 import { CommandMenu } from "./command-menu";
-import { getAllPosts } from "@/features/blog/data/posts";
+// import { getAllPosts } from "@/features/blog/data/posts";
 
 export default function SiteHeader() {
-  const posts = getAllPosts();
+  // const posts = getAllPosts();
 
   return (
     <SiteHeaderWrapper className="sticky top-0 z-50 flex h-16 items-center overflow-hidden bg-background px-2 max-md:px-5 sm:py-10">

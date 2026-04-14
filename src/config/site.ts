@@ -52,10 +52,10 @@ export const NAV_ITEMS: NavItem[] = [
     title: "Home",
     href: "/",
   },
-  {
-    title: "Components",
-    href: "/components",
-  },
+  // {
+  //   title: "Components",
+  //   href: "/components",
+  // },
   {
     title: "Blog",
     href: "/blog",
