@@ -91,8 +91,11 @@ export default function SiteFooter() {
     <footer className="mt-10 w-full px-5">
       <div className="flex flex-col gap-4 border-t py-8">
         <FooterDateTime />
-        <div>
+        <div className="flex flex-col items-center gap-1">
           <p className="text-center font-geist-mono text-sm text-balance text-muted-foreground">
+            © 2026 Satrya Putra
+          </p>
+          <p className="text-center font-geist-mono text-xs text-balance text-muted-foreground">
             Forked from a{" "}
             <a
               className="text-foreground underline-offset-4 hover:underline"
