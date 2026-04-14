@@ -12,17 +12,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ).toISOString(),
   }));
 
-  const components = getDocsByCategory("components").map((doc) => ({
-    url: `${baseUrl}/components/${doc.slug}`,
-    lastModified: new Date(
-      doc.metadata.updatedAt || doc.metadata.createdAt
-    ).toISOString(),
-  }));
-
-  const routes = ["", "/blog", "/components", "/collection"].map((route) => ({
+  const routes = ["", "/blog", "/collection"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
   }));
 
-  return [...routes, ...blogs, ...components];
+  return [...routes, ...blogs];
 }

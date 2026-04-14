@@ -8,22 +8,13 @@ const FEED_URL = `${SITE_CONFIG.url}/rss.xml`;
 
 export function GET() {
   const blogs = getDocsByCategory("blogs");
-  const components = getDocsByCategory("components");
 
-  const allItems = [
-    ...blogs.map((doc) => ({
-      title: doc.metadata.title,
-      link: `${SITE_CONFIG.url}/blog/${doc.slug}`,
-      description: doc.metadata.description || "",
-      date: new Date(doc.metadata.createdAt),
-    })),
-    ...components.map((doc) => ({
-      title: doc.metadata.title,
-      link: `${SITE_CONFIG.url}/components/${doc.slug}`,
-      description: doc.metadata.description || "",
-      date: new Date(doc.metadata.createdAt),
-    })),
-  ];
+  const allItems = blogs.map((doc) => ({
+    title: doc.metadata.title,
+    link: `${SITE_CONFIG.url}/blog/${doc.slug}`,
+    description: doc.metadata.description || "",
+    date: new Date(doc.metadata.createdAt),
+  }));
 
   allItems.sort((a, b) => b.date.getTime() - a.date.getTime());
 
