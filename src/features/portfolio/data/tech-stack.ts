@@ -1,0 +1,135 @@
+import { TechStack } from "@/features/portfolio/types/tech-stack";
+
+export const TECH_STACK: TechStack[] = [
+  {
+    id: "csharp",
+    title: "C#",
+    href: "https://docs.microsoft.com/en-us/dotnet/csharp/",
+    categories: ["Language"],
+  },
+  {
+    id: "dotnet",
+    title: ".NET",
+    href: "https://dotnet.microsoft.com/",
+    categories: ["Framework", "Backend"],
+  },
+  {
+    id: "microsoft",
+    title: "SQL Server",
+    href: "https://www.microsoft.com/en-us/sql-server/",
+    categories: ["Database"],
+  },
+
+  {
+    id: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    categories: ["Database", "SQL"],
+  },
+  {
+    id: "nodejs",
+    title: "Node.js",
+    href: "https://nodejs.org/",
+    categories: ["Runtime Environment"],
+  },
+  {
+    id: "docker",
+    title: "Docker",
+    href: "https://www.docker.com/",
+    categories: ["Containerization"],
+  },
+  {
+    id: "kubernetes",
+    title: "Kubernetes",
+    href: "https://kubernetes.io/",
+    categories: ["Container Orchestration"],
+  },
+  {
+    id: "azure",
+    title: "Azure",
+    href: "https://azure.microsoft.com/",
+    categories: ["Cloud Platform"],
+  },
+  {
+    id: "gcloud",
+    title: "Google Cloud",
+    href: "https://cloud.google.com/",
+    categories: ["Cloud Platform"],
+  },
+  {
+    id: "react",
+    title: "React",
+    href: "https://react.dev/",
+    categories: ["Library", "UI Library"],
+  },
+  {
+    id: "nextjs",
+    title: "Next.js",
+    href: "https://nextjs.org/",
+    categories: ["Framework"],
+    theme: true,
+  },
+  {
+    id: "better-auth",
+    title: "Better-Auth",
+    href: "https://www.better-auth.com/",
+    categories: ["Auth", "Library"],
+    theme: true,
+  },
+  {
+    id: "tailwindcss",
+    title: "TailwindCSS",
+    href: "https://tailwindcss.com/",
+    categories: ["Framework"],
+  },
+  {
+    id: "shadcn-ui",
+    title: "shadcn/ui",
+    href: "https://ui.shadcn.com/",
+    categories: ["Library", "Component Library"],
+    theme: true,
+  },
+  {
+    id: "motion",
+    title: "Motion",
+    href: "https://motion.dev/",
+    categories: ["Library", "Animation"],
+  },
+  {
+    id: "redux",
+    title: "Redux",
+    href: "https://redux.js.org/",
+    categories: ["State Management"],
+  },
+  {
+    id: "git",
+    title: "Git",
+    href: "https://git-scm.com/",
+    categories: ["Version Control"],
+  },
+  {
+    id: "mongodb",
+    title: "MongoDB",
+    href: "https://www.mongodb.com/",
+    categories: ["Database"],
+  },
+  {
+    id: "prisma",
+    title: "Prisma",
+    href: "https://www.prisma.io/",
+    categories: ["ORM", "Database"],
+    theme: true,
+  },
+  {
+    id: "supabase",
+    title: "Supabase",
+    href: "https://supabase.com/",
+    categories: ["BaaS", "Database"],
+  },
+  {
+    id: "figma",
+    title: "Figma",
+    href: "https://www.figma.com/",
+    categories: ["Tools", "Design"],
+  },
+];
