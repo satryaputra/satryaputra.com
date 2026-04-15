@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GeistPixelSquare } from "geist/font/pixel";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "@/styles/globals.css";
 import { defaultWebsiteMetadata } from "@/config/metadata";
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Providers>
           <div className="container mx-auto md:max-w-161">{children}</div>
         </Providers>
+        <SpeedInsights />
         <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
