@@ -4,7 +4,8 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
 export const SITE_CONFIG = {
   name: "Satrya Putra",
-  description: "I'm Satrya, a Backend Engineer. I love to build products.",
+  description:
+    "I'm Satrya, a Backend Engineer. I build things run smoothly behind the scenes.",
   url: baseUrl,
   ogImage: `${baseUrl}/images/opengraph-image.png`,
   links: {
@@ -66,12 +67,11 @@ export const NAV_ITEMS: NavItem[] = [
   // },
 ];
 
-export const X_USERNAME = "@ratneshchipre";
-export const GITHUB_USERNAME = "ratneshchipre";
-export const SOURCE_CODE_GITHUB_REPO = "ratneshchipre/ratneshc.com";
-export const SOURCE_CODE_GITHUB_URL =
-  "https://github.com/ratneshchipre/ratneshc.com";
+export const X_USERNAME = "";
+export const GITHUB_USERNAME = "";
+export const SOURCE_CODE_GITHUB_REPO = "";
+export const SOURCE_CODE_GITHUB_URL = "";
 
 export const UTM_PARAMS = {
-  utm_source: "ratneshc.com",
+  utm_source: "satryaputra.com",
 };

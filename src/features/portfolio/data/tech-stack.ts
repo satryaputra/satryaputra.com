@@ -2,16 +2,29 @@ import { TechStack } from "@/features/portfolio/types/tech-stack";
 
 export const TECH_STACK: TechStack[] = [
   {
-    id: "typescript",
-    title: "TypeScript",
-    href: "https://www.typescriptlang.org/",
+    id: "csharp",
+    title: "C#",
+    href: "https://docs.microsoft.com/en-us/dotnet/csharp/",
     categories: ["Language"],
   },
   {
-    id: "javascript",
-    title: "JavaScript",
-    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    categories: ["Language"],
+    id: "dotnet",
+    title: ".NET",
+    href: "https://dotnet.microsoft.com/",
+    categories: ["Framework", "Backend"],
+  },
+  {
+    id: "microsoft",
+    title: "SQL Server",
+    href: "https://www.microsoft.com/en-us/sql-server/",
+    categories: ["Database"],
+  },
+
+  {
+    id: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    categories: ["Database", "SQL"],
   },
   {
     id: "nodejs",
@@ -20,17 +33,28 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Runtime Environment"],
   },
   {
-    id: "expressjs",
-    title: "Express.js",
-    href: "https://expressjs.com/",
-    categories: ["Framework", "Backend"],
-    theme: true,
+    id: "docker",
+    title: "Docker",
+    href: "https://www.docker.com/",
+    categories: ["Containerization"],
   },
   {
-    id: "bun",
-    title: "Bun",
-    href: "https://bun.sh/",
-    categories: ["Runtime Environment"],
+    id: "kubernetes",
+    title: "Kubernetes",
+    href: "https://kubernetes.io/",
+    categories: ["Container Orchestration"],
+  },
+  {
+    id: "azure",
+    title: "Azure",
+    href: "https://azure.microsoft.com/",
+    categories: ["Cloud Platform"],
+  },
+  {
+    id: "gcloud",
+    title: "Google Cloud",
+    href: "https://cloud.google.com/",
+    categories: ["Cloud Platform"],
   },
   {
     id: "react",
@@ -88,12 +112,6 @@ export const TECH_STACK: TechStack[] = [
     title: "MongoDB",
     href: "https://www.mongodb.com/",
     categories: ["Database"],
-  },
-  {
-    id: "postgresql",
-    title: "PostgreSQL",
-    href: "https://www.postgresql.org/",
-    categories: ["Database", "SQL"],
   },
   {
     id: "prisma",

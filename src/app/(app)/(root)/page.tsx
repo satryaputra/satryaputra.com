@@ -14,7 +14,7 @@ export default function Page() {
       <Overview />
       {/* <Projects /> */}
       <Experience />
-      {/* <TechStack /> */}
+      <TechStack />
       {/* <GitHubContributions /> */}
       <Connect />
       <CTA />
